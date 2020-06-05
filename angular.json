@@ -42,6 +42,46 @@
           }
         }
       }
+    },
+    "angular-basic-dialogs": {
+      "projectType": "library",
+      "root": "projects/angular-basic-dialogs",
+      "sourceRoot": "projects/angular-basic-dialogs/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-basic-dialogs/tsconfig.lib.json",
+            "project": "projects/angular-basic-dialogs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-basic-dialogs/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-basic-dialogs/src/test.ts",
+            "tsConfig": "projects/angular-basic-dialogs/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-basic-dialogs/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-basic-dialogs/tsconfig.lib.json",
+              "projects/angular-basic-dialogs/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "angular-base-dao"
 }

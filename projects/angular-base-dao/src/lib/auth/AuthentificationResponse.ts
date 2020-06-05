@@ -1,4 +1,4 @@
-import { ApiResponse } from './ApiResponse';
+import { ApiResponse } from '../ApiResponse';
 
 export class AuthentificationResponse implements ApiResponse {
     message: string = '';

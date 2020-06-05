@@ -19,6 +19,10 @@
       "angular-base-dao": [
         "dist/angular-base-dao/angular-base-dao",
         "dist/angular-base-dao"
+      ],
+      "angular-basic-dialogs": [
+        "dist/angular-basic-dialogs/angular-basic-dialogs",
+        "dist/angular-basic-dialogs"
       ]
     }
   },

@@ -1,24 +1,24 @@
 import { Dao } from './Dao';
 import { HttpClient } from '@angular/common/http';
-import { AuthentificationService } from './authentification-service.service'
 import { IdentifiableRequestSerializable } from './IdentifiableRequestSerializable';
 import { DataUpdate } from './DataUpdate';
+import { AuthTokenHeader } from './auth/AuthTokenHeader';
 
 export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable> implements Dao<T>{
     protected observers: DataUpdate<T>[] = [];
     protected dataList: T[];
     protected routeUrl: string;
     protected http: HttpClient;
-    protected authService: AuthentificationService;
+    protected authTokenHeader: AuthTokenHeader;
 
     constructor(
         routeUrl: string,
         http: HttpClient,
-        authService: AuthentificationService
+        authService: AuthTokenHeader
     ) {
         this.routeUrl = routeUrl;
         this.http = http;
-        this.authService = authService;
+        this.authTokenHeader = authService;
     }
 
     public list(onUpdate: DataUpdate<T> = null): Promise<T[]> {
@@ -34,7 +34,7 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable> impl
                 resolve(this.dataList);
             }
             else {
-                this.http.get<T[]>(this.routeUrl, { headers: this.authService.headers }).subscribe(
+                this.http.get<T[]>(this.routeUrl, { headers: this.authTokenHeader.headers }).subscribe(
                     data => {
                         this.dataList = data.map(value => this.createModel(value));
 
@@ -54,10 +54,10 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable> impl
     public create(item: T): Promise<T> {        
         return new Promise<T>((resolve, reject) => {
             if (!item) {
-                reject('Could not create game (null)');
+                reject('Could not create item (null)');
             }
             else {
-                this.http.post<T>(this.routeUrl, item.toJsonRequestBody(), { headers: this.authService.headers }).subscribe(
+                this.http.post<T>(this.routeUrl, item.toJsonRequestBody(), { headers: this.authTokenHeader.headers }).subscribe(
                     data => {
                         data = this.createModel(data);
                         this.dataList.push(data);
@@ -78,7 +78,7 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable> impl
                 reject('Could not update game (null)');
             }
             else {
-                this.http.put<T>(this.routeUrl + '/' + item._id, item.toJsonRequestBody(), { headers: this.authService.headers }).subscribe(
+                this.http.put<T>(this.routeUrl + '/' + item._id, item.toJsonRequestBody(), { headers: this.authTokenHeader.headers }).subscribe(
                     data => {
                         data = this.createModel(data);
                         this.notifyDataChange();
@@ -98,7 +98,7 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable> impl
                 reject('Could not delte T (null)');
             }
             else {
-                this.http.delete<T>(this.routeUrl + '/' + item._id, { headers: this.authService.headers }).subscribe(
+                this.http.delete<T>(this.routeUrl + '/' + item._id, { headers: this.authTokenHeader.headers }).subscribe(
                     data => {
                         data = this.createModel(data);
                         this.dataList = this.dataList.filter(obj => obj._id !== item._id);

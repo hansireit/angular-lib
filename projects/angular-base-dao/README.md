@@ -1,24 +1,41 @@
 # AngularBaseDao
+This library is used to reduce the lines of code to implement a DAO-Service layer for your angular application.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
+## Usage
+To use the AngularBaseDao library follow these steps:
+1. __npm install angular-base-dao__
+2. create a entity-class which implements the **IdentifiableRequestSerializable**-class
+3. create a entity-service which extends from the **ApiBaseDao**-class
+4. create a authentification-service which implements the **AuthTokenHeader**-class
+    - this class must be injected in your **entity-service** and then passed to its super-constructor (ApiBaseDao)
+    - this class hold the logic for the login- and register-request
+    - it also holds the current auth-token (JWT) for future request of the entity-services
 
-## Code scaffolding
+## Server Requirements
+- REST server
+- http methods are used to differentiate between the different CRUDL request
 
-Run `ng generate component component-name --project angular-base-dao` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project angular-base-dao`.
-> Note: Don't forget to add `--project angular-base-dao` or else it will be added to the default project in your `angular.json` file. 
+    - **POST** (CREATE)
+        - url: https://api.net/entity
+        - request body: **json object**
+        - response body: **json object**
 
-## Build
+    - **GET** (READ)
+        - url: https://api.net/entity/:id
+        - request body: -
+        - response body: **json object**
 
-Run `ng build angular-base-dao` to build the project. The build artifacts will be stored in the `dist/` directory.
+     - **GET** (LIST)
+        - url: https://api.net/entity
+        - request body: -
+        - response body: **json array**
 
-## Publishing
+    - **PUT** (UPDATE)
+        - url: https://api.net/entity/:id
+        - request body: **json object**
+        - response body: **json object**
 
-After building your library with `ng build angular-base-dao`, go to the dist folder `cd dist/angular-base-dao` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test angular-base-dao` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    - **DELETE** (DELETE)
+        - url: https://api.net/entity/:id
+        - request body: -
+        - response body: **json object**
