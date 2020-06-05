@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<p class="mat-body">
+    {{text}}
+</p>
+<mat-dialog-actions>
+    <button mat-button color="primary" (click)="dialogRef.close(false)">Abbrechen</button>
+    <button mat-raised-button color="warn" (click)="dialogRef.close(true)">Löschen</button>
+</mat-dialog-actions>

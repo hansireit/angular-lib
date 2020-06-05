@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<p class="mat-body">
+    {{text}}
+    <mat-form-field type="fill">
+        <mat-label>neuer Name</mat-label>
+        <input matInput [(ngModel)]="data.name" placeholder="meinNeuerDateiname.png">
+    </mat-form-field>
+</p>
+<mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close(false)">Abbrechen</button>
+    <button mat-raised-button color="primary" (click)="dialogRef.close(data)">Umbennen</button>
+</mat-dialog-actions>
