@@ -1,0 +1,12 @@
+{
+  "name": "angular-base-dao",
+  "version": "0.0.2",
+  "peerDependencies": {
+    "@angular/common": "^9.1.9",
+    "@angular/core": "^9.1.9",
+    "ngx-cookie-service": "^3.0.4"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}

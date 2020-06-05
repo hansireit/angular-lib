@@ -1,0 +1,47 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular-base-dao": {
+      "projectType": "library",
+      "root": "projects/angular-base-dao",
+      "sourceRoot": "projects/angular-base-dao/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-base-dao/tsconfig.lib.json",
+            "project": "projects/angular-base-dao/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-base-dao/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-base-dao/src/test.ts",
+            "tsConfig": "projects/angular-base-dao/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-base-dao/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-base-dao/tsconfig.lib.json",
+              "projects/angular-base-dao/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "angular-base-dao"
+}
