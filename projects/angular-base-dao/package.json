@@ -8,5 +8,10 @@
   },
   "dependencies": {
     "tslib": "^1.10.0"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "./src/public_api.ts"
+    }
   }
 }

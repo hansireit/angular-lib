@@ -23,6 +23,10 @@
       "angular-basic-dialogs": [
         "dist/angular-basic-dialogs/angular-basic-dialogs",
         "dist/angular-basic-dialogs"
+      ],
+      "angular-item-picker": [
+        "dist/angular-item-picker/angular-item-picker",
+        "dist/angular-item-picker"
       ]
     }
   },

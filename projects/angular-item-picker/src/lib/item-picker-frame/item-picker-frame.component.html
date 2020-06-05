@@ -1,0 +1,49 @@
+<div class="detail-top-bar">
+  <mat-form-field class="full-flex-input" appearance="outline" color="primary">
+    <mat-label>Suchen</mat-label>
+    <input
+      matInput
+      type="search"
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Cat"
+    />
+    <mat-icon matPrefix>search</mat-icon>
+  </mat-form-field>
+
+  <button mat-raised-button color="warn" (click)="removeItem()">
+    Objekt entfernen
+  </button>
+</div>
+
+<div class="item-container">
+  <mat-card
+    *ngFor="let item of filteredPickableItems"
+    class="item-container-item"
+  >
+    <div>
+      <span class="no-text-overflow title-text">{{ item.getName() }}</span>
+    </div>
+
+    <div
+      class="item-image"
+      [style.backgroundImage]="cleanURL(item.getThumbnailUrl())"
+    ></div>
+
+    <div class="flex-spacer"></div>
+
+    <mat-card-actions class="card-actions">
+      <button
+        class="use-button"
+        mat-raised-button
+        color="primary"
+        (click)="pickItem(item)"
+      >
+        Verwenden
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <div *ngIf="filteredPickableItems.length === 0" class="no-results-text">
+    Keine Ergebnise gefunden
+  </div>
+</div>
