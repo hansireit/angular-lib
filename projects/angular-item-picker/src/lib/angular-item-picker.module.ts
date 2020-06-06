@@ -21,6 +21,11 @@ import { ItemInputComponent } from './item-input/item-input.component';
     MatButtonModule
   ],
   providers: [],
-  exports: [ItemPickerFrameComponent, ItemInputComponent]
+  exports: [
+    ItemPickerFrameComponent,
+    ItemInputComponent,
+    MatButtonModule,
+    MatInputModule
+  ]
 })
 export class AngularItemPickerModule {}

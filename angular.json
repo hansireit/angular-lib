@@ -85,6 +85,11 @@
     },
     "angular-item-picker": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "sass"
+        }
+      },
       "root": "projects/angular-item-picker",
       "sourceRoot": "projects/angular-item-picker/src",
       "prefix": "lib",
@@ -124,10 +129,5 @@
       }
     }
   },
-  "defaultProject": "angular-base-dao",
-  "schematics": {
-    "@schematics/angular:component": {
-      "styleext": "sass"
-    }
-  }
+  "defaultProject": "angular-base-dao"
 }
