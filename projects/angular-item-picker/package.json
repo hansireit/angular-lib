@@ -1,6 +1,12 @@
 {
   "name": "angular-item-picker",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "homepage": "https://github.com/hansireit/angular-lib#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hansireit/angular-lib",
+    "directory": "projects/angular-item-picker"
+  },
   "peerDependencies": {
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9",

@@ -1,9 +1,8 @@
-# AngularBaseDao
+# Angular-Lib
+Angular libraries by hansireit.
 
-## Build the library
-- ng build angular-base-dao --prod
-- cd dist/angular-base-dao/
-- npm pack
+## Angular-Base-Dao
+[README](https://github.com/hansireit/angular-lib/tree/master/projects/angular-base-dao#readme)
 
-### In the main project import the package by
-- npm install ../angular-lib/dist/angular-base-dao/angular-base-dao-0.0.4.tgz
+## Angular-Item-Picker
+[README](https://github.com/hansireit/angular-lib/tree/master/projects/angular-item-picker#readme)
