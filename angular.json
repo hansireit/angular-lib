@@ -122,6 +122,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-base-dao"
+    }
+  },
+  "defaultProject": "angular-base-dao",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "sass"
+    }
+  }
 }
