@@ -2,7 +2,6 @@ import { Dao } from './Dao';
 import { HttpClient } from '@angular/common/http';
 import { IdentifiableRequestSerializable } from './IdentifiableRequestSerializable';
 import { AuthTokenHeader } from './auth/AuthTokenHeader';
-import { Identifiable } from './Identifiable';
 
 export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable>
   implements Dao<T> {
@@ -98,10 +97,10 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable>
     });
   }
 
-  read(entity: Identifiable): Promise<T> {
+  read(id: string): Promise<T> {
     return new Promise<T>((resolve, reject) => {
       this.http
-        .get<T>(this.routeUrl + '/' + entity._id, {
+        .get<T>(this.routeUrl + '/' + id, {
           headers: this.authTokenHeader.headers
         })
         .subscribe(
