@@ -8,21 +8,27 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable>
   protected routeUrl: string;
   protected http: HttpClient;
   protected authTokenHeader: AuthTokenHeader;
+  protected httpWithCredentials: boolean = false;
 
   constructor(
     routeUrl: string,
     http: HttpClient,
-    authService: AuthTokenHeader
+    authService: AuthTokenHeader,
+    httpWithCredentials: boolean = false
   ) {
     this.routeUrl = routeUrl;
     this.http = http;
     this.authTokenHeader = authService;
+    this.httpWithCredentials = httpWithCredentials;
   }
 
   public list(): Promise<T[]> {
     return new Promise((resolve, reject) => {
       this.http
-        .get<T[]>(this.routeUrl, { headers: this.authTokenHeader.headers })
+        .get<T[]>(this.routeUrl, {
+          headers: this.authTokenHeader.headers,
+          withCredentials: this.httpWithCredentials
+        })
         .subscribe(
           data => {
             resolve(data.map(elem => this.createModel(elem)));
@@ -41,7 +47,8 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable>
       } else {
         this.http
           .post<T>(this.routeUrl, item.toJsonRequestBody(), {
-            headers: this.authTokenHeader.headers
+            headers: this.authTokenHeader.headers,
+            withCredentials: this.httpWithCredentials
           })
           .subscribe(
             data => {
@@ -62,7 +69,8 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable>
       } else {
         this.http
           .put<T>(this.routeUrl + '/' + item._id, item.toJsonRequestBody(), {
-            headers: this.authTokenHeader.headers
+            headers: this.authTokenHeader.headers,
+            withCredentials: this.httpWithCredentials
           })
           .subscribe(
             data => {
@@ -83,7 +91,8 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable>
       } else {
         this.http
           .delete<T>(this.routeUrl + '/' + item._id, {
-            headers: this.authTokenHeader.headers
+            headers: this.authTokenHeader.headers,
+            withCredentials: this.httpWithCredentials
           })
           .subscribe(
             data => {
@@ -101,7 +110,8 @@ export abstract class ApiBaseDao<T extends IdentifiableRequestSerializable>
     return new Promise<T>((resolve, reject) => {
       this.http
         .get<T>(this.routeUrl + '/' + id, {
-          headers: this.authTokenHeader.headers
+          headers: this.authTokenHeader.headers,
+          withCredentials: this.httpWithCredentials
         })
         .subscribe(
           data => {
