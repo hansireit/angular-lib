@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-base-dao/tsconfig.lib.json",
             "project": "projects/angular-base-dao/ng-package.json"
@@ -50,7 +50,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-basic-dialogs/tsconfig.lib.json",
             "project": "projects/angular-basic-dialogs/ng-package.json"
@@ -87,7 +87,7 @@
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "sass"
+          "style": "sass"
         }
       },
       "root": "projects/angular-item-picker",
@@ -95,7 +95,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-item-picker/tsconfig.lib.json",
             "project": "projects/angular-item-picker/ng-package.json"
@@ -135,7 +135,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-aspect-container/tsconfig.lib.json",
             "project": "projects/angular-aspect-container/ng-package.json"

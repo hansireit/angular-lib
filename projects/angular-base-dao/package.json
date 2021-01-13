@@ -13,6 +13,6 @@
     "ngx-cookie-service": "^3.0.4"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.0"
   }
 }
