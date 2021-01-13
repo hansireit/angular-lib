@@ -27,6 +27,10 @@
       "angular-item-picker": [
         "dist/angular-item-picker/angular-item-picker",
         "dist/angular-item-picker"
+      ],
+      "angular-aspect-container": [
+        "dist/angular-aspect-container/angular-aspect-container",
+        "dist/angular-aspect-container"
       ]
     }
   },

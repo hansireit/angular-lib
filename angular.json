@@ -127,6 +127,46 @@
           }
         }
       }
+    },
+    "angular-aspect-container": {
+      "projectType": "library",
+      "root": "projects/angular-aspect-container",
+      "sourceRoot": "projects/angular-aspect-container/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-aspect-container/tsconfig.lib.json",
+            "project": "projects/angular-aspect-container/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-aspect-container/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-aspect-container/src/test.ts",
+            "tsConfig": "projects/angular-aspect-container/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-aspect-container/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-aspect-container/tsconfig.lib.json",
+              "projects/angular-aspect-container/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-base-dao"
