@@ -1,6 +1,6 @@
 {
   "name": "angular-base-dao",
-  "version": "0.0.10",
+  "version": "0.11.0",
   "homepage": "https://github.com/hansireit/angular-lib#readme",
   "repository": {
     "type": "git",
@@ -8,8 +8,8 @@
     "directory": "projects/angular-base-dao"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9",
+    "@angular/common": "^11.1.9",
+    "@angular/core": "^11.1.9",
     "ngx-cookie-service": "^3.0.4"
   },
   "dependencies": {
