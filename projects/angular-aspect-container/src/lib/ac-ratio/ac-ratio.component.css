@@ -1,0 +1,8 @@
+:host {
+  display: flex;
+  background-color: red;
+}
+
+.ac-ratio-inner {
+  background-color: blue;
+}

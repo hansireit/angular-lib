@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { AngularAspectContainerComponent } from './angular-aspect-container.component';
-
-
+import { AcRatioComponent } from './ac-ratio/ac-ratio.component';
 
 @NgModule({
-  declarations: [AngularAspectContainerComponent],
-  imports: [
-  ],
-  exports: [AngularAspectContainerComponent]
+  declarations: [AngularAspectContainerComponent, AcRatioComponent],
+  imports: [],
+  exports: [AngularAspectContainerComponent, AcRatioComponent]
 })
-export class AngularAspectContainerModule { }
+export class AngularAspectContainerModule {}
