@@ -2,7 +2,8 @@
 Used to create containers with a certain aspect ratio.
 
 ## Usage
-```<lib-ac-ratio
+```
+<lib-ac-ratio
   id="aspect-wrapper"
   [targetRatio]="16 / 9"
   [sizingMode]="AcSizingMode.FIT_CONTENT"
