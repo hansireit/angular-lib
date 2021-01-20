@@ -4,6 +4,9 @@ ng build angular-base-dao --prod
 ng build angular-item-picker --prod
 ng build angular-aspect-container --prod
 
+# Run a example project
+ng serve angular-aspect-container-example
+
 ## Angular-Base-Dao
 [README](https://github.com/hansireit/angular-lib/tree/master/projects/angular-base-dao#readme)
 

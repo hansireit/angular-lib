@@ -5,7 +5,7 @@ import {
   ViewChild,
   AfterViewInit,
   Renderer2,
-  HostListener
+  HostListener,
 } from '@angular/core';
 import { AcSizingMode } from '../AcSizingMode';
 import { AcCenterMode } from '../AcCenterMode';
@@ -13,11 +13,22 @@ import { AcCenterMode } from '../AcCenterMode';
 @Component({
   selector: 'lib-ac-ratio',
   templateUrl: './ac-ratio.component.html',
-  styleUrls: ['./ac-ratio.component.css']
+  styleUrls: ['./ac-ratio.component.css'],
 })
 export class AcRatioComponent implements AfterViewInit {
+  private _targetRatio: number = 16 / 9;
+
   @Input()
-  targetRatio: number = 1 / 1;
+  set targetRatio(val: number) {
+    this._targetRatio = val;
+    if (this.acRatioInner != null) {
+      this.calculateAndSetAspect();
+    }
+  }
+
+  get targetRatio() {
+    return this._targetRatio;
+  }
 
   @Input()
   sizingMode: AcSizingMode = AcSizingMode.MATCH_PARENT;
@@ -40,6 +51,9 @@ export class AcRatioComponent implements AfterViewInit {
   }
 
   public calculateAndSetAspect(): void {
+    this.renderer.removeStyle(this.acRatioInner.nativeElement, 'width');
+    this.renderer.removeStyle(this.acRatioInner.nativeElement, 'height');
+
     const hostWidth = this.hostElem.nativeElement.offsetWidth;
 
     if (this.sizingMode === AcSizingMode.MATCH_PARENT) {
@@ -56,19 +70,18 @@ export class AcRatioComponent implements AfterViewInit {
         `${targetHeight}px`
       );
     } else {
-      const contentWidth = this.acRatioInner.nativeElement.offsetWidth;
-      const contentHeight = this.acRatioInner.nativeElement.offsetHeight;
+      const contentWidth = this.acRatioInner.nativeElement.offsetWidth + 1;
+      const contentHeight = this.acRatioInner.nativeElement.offsetHeight + 1;
       let targetWidth: number = 0;
       let targetHeight: number = 0;
 
       const currentRatio = contentWidth / contentHeight;
-
-      if (currentRatio >= this.targetRatio) {
+      if (currentRatio >= this._targetRatio) {
         targetWidth = contentWidth;
-        targetHeight = targetWidth / this.targetRatio;
+        targetHeight = targetWidth * (1 / this._targetRatio);
       } else {
         targetHeight = contentHeight;
-        targetWidth = targetHeight * this.targetRatio;
+        targetWidth = targetHeight * this._targetRatio;
       }
 
       this.renderer.setStyle(
