@@ -1,6 +1,15 @@
 {
   "name": "angular-aspect-container",
-  "version": "0.0.2",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hansireit/angular-lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hansireit/angular-lib",
+    "directory": "projects/angular-aspect-container"
+  },
+  "author": {
+    "name": "hansi_reit"
+  },
   "peerDependencies": {
     "@angular/common": "^9.1.13",
     "@angular/core": "^9.1.13"
