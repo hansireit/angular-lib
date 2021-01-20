@@ -1,3 +1,7 @@
 :host {
   display: flex;
 }
+
+.content-wrapper {
+  display: inline-block;
+}

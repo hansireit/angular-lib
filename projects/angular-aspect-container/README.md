@@ -31,3 +31,8 @@ Used to create containers with a certain aspect ratio.
     min-height: 100%
     background-color: blue
 ```
+
+## Example
+
+An Angular example can be found here:
+[angular-aspect-container-example](https://github.com/hansireit/angular-lib/tree/master/projects/angular-aspect-container)
