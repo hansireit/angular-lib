@@ -8,4 +8,5 @@ export * from './lib/angular-aspect-container.module';
 
 export * from './lib/ac-ratio/ac-ratio.component';
 export * from './lib/AcSizingMode';
-export * from './lib/AcCenterMode';
+export * from './lib/AcHorizontalAlignment';
+export * from './lib/AcVerticalAlignment';

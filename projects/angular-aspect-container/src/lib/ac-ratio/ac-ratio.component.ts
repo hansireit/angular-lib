@@ -8,7 +8,8 @@ import {
   HostListener,
 } from '@angular/core';
 import { AcSizingMode } from '../AcSizingMode';
-import { AcCenterMode } from '../AcCenterMode';
+import { AcHorizontalAlignment } from '../AcHorizontalAlignment';
+import { AcVerticalAlignment } from '../AcVerticalAlignment';
 
 @Component({
   selector: 'lib-ac-ratio',
@@ -18,7 +19,9 @@ import { AcCenterMode } from '../AcCenterMode';
 export class AcRatioComponent implements AfterViewInit {
   private _targetRatio: number = 16 / 9;
   private _sizingMode: AcSizingMode = AcSizingMode.MATCH_PARENT;
-  private _centerMode: AcCenterMode = AcCenterMode.CENTER;
+  private _horizontalAlignment: AcHorizontalAlignment =
+    AcHorizontalAlignment.CENTER;
+  private _verticalAlignment: AcVerticalAlignment = AcVerticalAlignment.CENTER;
 
   @Input()
   set targetRatio(val: number) {
@@ -43,14 +46,25 @@ export class AcRatioComponent implements AfterViewInit {
   }
 
   @Input()
-  set centerMode(val: AcCenterMode) {
-    this._centerMode = val;
+  set horizontalAlignment(val: AcHorizontalAlignment) {
+    this._horizontalAlignment = val;
     if (this.acRatioInner != null) {
       this.calculateAndSetAspect();
     }
   }
-  get centerMode() {
-    return this._centerMode;
+  get horizontalAlignment() {
+    return this._horizontalAlignment;
+  }
+
+  @Input()
+  set verticalAlignment(val: AcVerticalAlignment) {
+    this._verticalAlignment = val;
+    if (this.acRatioInner != null) {
+      this.calculateAndSetAspect();
+    }
+  }
+  get verticalAlignment() {
+    return this._verticalAlignment;
   }
 
   @ViewChild('acRatioInner')
@@ -68,29 +82,35 @@ export class AcRatioComponent implements AfterViewInit {
   }
 
   public calculateAndSetAspect(): void {
+    this.removeContenCentering();
+
     this.renderer.removeStyle(this.acRatioInner.nativeElement, 'width');
     this.renderer.removeStyle(this.acRatioInner.nativeElement, 'height');
 
-    const hostWidth = this.hostElem.nativeElement.offsetWidth;
+    let targetWidth: number = 0;
+    let targetHeight: number = 0;
 
     if (this._sizingMode === AcSizingMode.MATCH_PARENT) {
-      const targetHeight = hostWidth / this.targetRatio;
-      this.renderer.setStyle(
-        this.acRatioInner.nativeElement,
-        'width',
-        `${hostWidth}px`
-      );
+      this.justifyContentHorizontally('center');
+      this.alignItemsVertically('center');
 
-      this.renderer.setStyle(
-        this.acRatioInner.nativeElement,
-        'height',
-        `${targetHeight}px`
-      );
+      const hostWidth = this.hostElem.nativeElement.offsetWidth;
+      const hostHeight = this.hostElem.nativeElement.offsetHeight;
+      const hostAspectRatio = hostWidth / hostHeight;
+
+      if (hostAspectRatio >= this.targetRatio) {
+        // use full height as base
+        targetHeight = hostHeight;
+        targetWidth = targetHeight * this.targetRatio;
+      } else {
+        // use full width as base
+        targetWidth = hostWidth;
+        targetHeight = targetWidth * (1 / this.targetRatio);
+      }
     } else {
+      // Add +1 to the dimensions because decimals get rounded
       const contentWidth = this.acRatioInner.nativeElement.offsetWidth + 1;
       const contentHeight = this.acRatioInner.nativeElement.offsetHeight + 1;
-      let targetWidth: number = 0;
-      let targetHeight: number = 0;
 
       const currentRatio = contentWidth / contentHeight;
       if (currentRatio >= this._targetRatio) {
@@ -100,44 +120,82 @@ export class AcRatioComponent implements AfterViewInit {
         targetHeight = contentHeight;
         targetWidth = targetHeight * this._targetRatio;
       }
-
-      this.renderer.setStyle(
-        this.acRatioInner.nativeElement,
-        'width',
-        `${targetWidth}px`
-      );
-
-      this.renderer.setStyle(
-        this.acRatioInner.nativeElement,
-        'height',
-        `${targetHeight}px`
-      );
     }
+    // Set calculated dimensions
+    this.setAcInnerWidth(targetWidth);
+    this.setAcInnerHeight(targetHeight);
 
-    switch (this._centerMode) {
-      case AcCenterMode.CENTER:
-        this.renderer.setStyle(
-          this.hostElem.nativeElement,
-          'justify-content',
-          'center'
-        );
+    // Align content
+    this.setHorizontalAlignment();
+    this.setVerticalAlignment();
+  }
+
+  private setHorizontalAlignment(): void {
+    switch (this._horizontalAlignment) {
+      case AcHorizontalAlignment.CENTER:
+        this.justifyContentHorizontally('center');
         break;
 
-      case AcCenterMode.LEFT:
-        this.renderer.setStyle(
-          this.hostElem.nativeElement,
-          'justify-content',
-          'flex-start'
-        );
+      case AcHorizontalAlignment.LEFT:
+        this.justifyContentHorizontally('flex-start');
         break;
 
-      case AcCenterMode.RIGHT:
-        this.renderer.setStyle(
-          this.hostElem.nativeElement,
-          'justify-content',
-          'flex-end'
-        );
+      case AcHorizontalAlignment.RIGHT:
+        this.justifyContentHorizontally('flex-end');
         break;
     }
+  }
+
+  private setVerticalAlignment(): void {
+    switch (this._verticalAlignment) {
+      case AcVerticalAlignment.CENTER:
+        this.alignItemsVertically('center');
+        break;
+
+      case AcVerticalAlignment.TOP:
+        this.alignItemsVertically('flex-start');
+        break;
+
+      case AcVerticalAlignment.BOTTOM:
+        this.alignItemsVertically('flex-end');
+        break;
+    }
+  }
+
+  private setAcInnerWidth(width: number) {
+    this.renderer.setStyle(
+      this.acRatioInner.nativeElement,
+      'width',
+      `${width}px`
+    );
+  }
+
+  private setAcInnerHeight(height: number) {
+    this.renderer.setStyle(
+      this.acRatioInner.nativeElement,
+      'height',
+      `${height}px`
+    );
+  }
+
+  private justifyContentHorizontally(alignment: string = 'center'): void {
+    this.renderer.setStyle(
+      this.hostElem.nativeElement,
+      'justify-content',
+      alignment
+    );
+  }
+
+  private alignItemsVertically(alignment: string = 'center'): void {
+    this.renderer.setStyle(
+      this.hostElem.nativeElement,
+      'align-items',
+      alignment
+    );
+  }
+
+  private removeContenCentering(): void {
+    this.renderer.removeStyle(this.hostElem.nativeElement, 'justify-content');
+    this.renderer.removeStyle(this.hostElem.nativeElement, 'align-items');
   }
 }
