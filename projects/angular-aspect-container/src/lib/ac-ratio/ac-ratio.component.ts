@@ -17,6 +17,8 @@ import { AcCenterMode } from '../AcCenterMode';
 })
 export class AcRatioComponent implements AfterViewInit {
   private _targetRatio: number = 16 / 9;
+  private _sizingMode: AcSizingMode = AcSizingMode.MATCH_PARENT;
+  private _centerMode: AcCenterMode = AcCenterMode.CENTER;
 
   @Input()
   set targetRatio(val: number) {
@@ -25,16 +27,31 @@ export class AcRatioComponent implements AfterViewInit {
       this.calculateAndSetAspect();
     }
   }
-
   get targetRatio() {
     return this._targetRatio;
   }
 
   @Input()
-  sizingMode: AcSizingMode = AcSizingMode.MATCH_PARENT;
+  set sizingMode(val: AcSizingMode) {
+    this._sizingMode = val;
+    if (this.acRatioInner != null) {
+      this.calculateAndSetAspect();
+    }
+  }
+  get sizingMode() {
+    return this._sizingMode;
+  }
 
   @Input()
-  centerMode: AcCenterMode = AcCenterMode.CENTER;
+  set centerMode(val: AcCenterMode) {
+    this._centerMode = val;
+    if (this.acRatioInner != null) {
+      this.calculateAndSetAspect();
+    }
+  }
+  get centerMode() {
+    return this._centerMode;
+  }
 
   @ViewChild('acRatioInner')
   acRatioInner: ElementRef;
@@ -56,7 +73,7 @@ export class AcRatioComponent implements AfterViewInit {
 
     const hostWidth = this.hostElem.nativeElement.offsetWidth;
 
-    if (this.sizingMode === AcSizingMode.MATCH_PARENT) {
+    if (this._sizingMode === AcSizingMode.MATCH_PARENT) {
       const targetHeight = hostWidth / this.targetRatio;
       this.renderer.setStyle(
         this.acRatioInner.nativeElement,
@@ -97,7 +114,7 @@ export class AcRatioComponent implements AfterViewInit {
       );
     }
 
-    switch (this.centerMode) {
+    switch (this._centerMode) {
       case AcCenterMode.CENTER:
         this.renderer.setStyle(
           this.hostElem.nativeElement,

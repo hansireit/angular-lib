@@ -10,7 +10,10 @@ import { AcSizingMode } from 'angular-aspect-container';
 export class AppComponent {
   public AcCenterMode = AcCenterMode;
   public AcSizingMode = AcSizingMode;
+
   public inputAspectRatio: number = 1;
+  public inputSizingMode: AcSizingMode = AcSizingMode.FIT_CONTENT;
+  public inputCenterMode: AcCenterMode = AcCenterMode.CENTER;
 
   title = 'angular-aspect-container-example';
 }
