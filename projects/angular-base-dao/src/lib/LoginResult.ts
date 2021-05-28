@@ -1,6 +1,0 @@
-export enum LoginResult {
-    SUCCESS,
-    EMAIL_TAKEN,
-    INCORRECT_CREDENTIALS,
-    INTERNAL_ERROR
-}
