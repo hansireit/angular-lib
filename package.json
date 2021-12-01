@@ -5,6 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:libs": "npm run build:angular-base-dao && npm run build:angular-item-picker && npm run build:angular-aspect-container",
+    "build:angular-base-dao": "ng build angular-base-dao --configuration production",
+    "build:angular-item-picker": "ng build angular-item-picker --configuration production",
+    "build:angular-aspect-container": "ng build angular-aspect-container --configuration production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
