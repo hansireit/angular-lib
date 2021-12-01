@@ -8,10 +8,10 @@
     "directory": "projects/angular-item-picker"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.9",
-    "@angular/core": "^9.1.9",
-    "@angular/material": "^9.2.4",
-    "@angular/cdk": "^9.2.4"
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@angular/material": "^13.0.0",
+    "@angular/cdk": "^13.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
