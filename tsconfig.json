@@ -24,6 +24,10 @@
         "dist/angular-basic-dialogs/angular-basic-dialogs",
         "dist/angular-basic-dialogs"
       ],
+      "angular-base-form": [
+        "dist/angular-base-form/angular-base-form",
+        "dist/angular-base-form"
+      ],
       "angular-item-picker": [
         "dist/angular-item-picker/angular-item-picker",
         "dist/angular-item-picker"

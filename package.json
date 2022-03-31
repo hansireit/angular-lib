@@ -5,10 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:libs": "npm run build:angular-base-dao && npm run build:angular-item-picker && npm run build:angular-aspect-container",
+    "build:libs": "npm run build:angular-base-dao && npm run build:angular-item-picker && npm run build:angular-aspect-container && npm run build:angular-base-form",
     "build:angular-base-dao": "ng build angular-base-dao --configuration production",
     "build:angular-item-picker": "ng build angular-item-picker --configuration production",
     "build:angular-aspect-container": "ng build angular-aspect-container --configuration production",
+    "build:angular-base-form": "ng build angular-base-form --configuration production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -16,6 +17,11 @@
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.3.1",
+    "@angular-eslint/builder": "13.1.0",
+    "@angular-eslint/eslint-plugin": "13.1.0",
+    "@angular-eslint/eslint-plugin-template": "13.1.0",
+    "@angular-eslint/schematics": "13.1.0",
+    "@angular-eslint/template-parser": "13.1.0",
     "@angular/cli": "^13.3.1",
     "@angular/common": "^13.3.1",
     "@angular/compiler": "^13.3.1",
@@ -27,6 +33,10 @@
     "@types/jasmine": "^4.0.1",
     "@types/jasminewd2": "~2.0.10",
     "@types/node": "^17.0.23",
+    "@typescript-eslint/eslint-plugin": "5.11.0",
+    "@typescript-eslint/parser": "5.11.0",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.5.0",
     "jasmine-core": "^4.0.1",
     "jasmine-spec-reporter": "^7.0.0",
     "karma": "^6.3.17",
@@ -36,11 +46,11 @@
     "karma-jasmine-html-reporter": "^1.7.0",
     "ng-packagr": "^13.3.0",
     "ngx-cookie-service": "^13.1.2",
+    "prettier": "^2.6.1",
     "protractor": "~7.0.0",
     "rxjs": "^7.5.5",
     "ts-node": "^10.7.0",
     "tslib": "^2.3.1",
-    "tslint": "~6.1.0",
     "typescript": "~4.6.3",
     "zone.js": "~0.11.5"
   },
@@ -48,6 +58,7 @@
     "@angular/animations": "^13.3.1",
     "@angular/cdk": "~13.3.2",
     "@angular/forms": "^13.3.1",
-    "@angular/material": "~13.3.2"
+    "@angular/material": "~13.3.2",
+    "tslib": "^2.3.0"
   }
 }
