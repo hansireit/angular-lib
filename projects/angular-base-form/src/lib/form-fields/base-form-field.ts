@@ -1,4 +1,4 @@
-import { FormControl, ValidatorFn, Validators } from '@angular/forms';
+import { UntypedFormControl, ValidatorFn, Validators } from '@angular/forms';
 import { RequiredValidationError } from '../errors/required-validation-error';
 import { ValidationError } from '../errors/validation-error';
 import { FormFieldType } from './form-field-type.enum';
@@ -7,7 +7,7 @@ export class BaseFormField<T> {
   readonly key: string;
   readonly name: string;
   readonly validators: ValidatorFn[];
-  readonly formControl: FormControl;
+  readonly formControl: UntypedFormControl;
   readonly type: FormFieldType;
   readonly required: boolean;
 
@@ -33,7 +33,7 @@ export class BaseFormField<T> {
       validationErrors.push(new RequiredValidationError(this.name));
     }
 
-    this.formControl = new FormControl(formState, this.validators);
+    this.formControl = new UntypedFormControl(formState, this.validators);
 
     for (const validationError of validationErrors) {
       this._validationErrors.set(validationError.errorKey, validationError);
