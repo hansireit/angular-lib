@@ -7,7 +7,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
         "project": "libs/angular-item-picker/ng-package.json"
@@ -23,7 +23,7 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "libs/angular-item-picker/jest.config.ts",
@@ -37,13 +37,10 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/angular-item-picker/**/*.ts",
-          "libs/angular-item-picker/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/angular-item-picker/**/*.ts", "libs/angular-item-picker/**/*.html"]
       }
     }
   }
