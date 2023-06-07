@@ -6,25 +6,27 @@ import {
   AfterViewInit,
   Renderer2,
   HostListener,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 import { AcSizingMode } from '../AcSizingMode';
 import { AcHorizontalAlignment } from '../AcHorizontalAlignment';
 import { AcVerticalAlignment } from '../AcVerticalAlignment';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'lib-ac-ratio',
   templateUrl: './ac-ratio.component.html',
-  styleUrls: ['./ac-ratio.component.css']
+  styleUrls: ['./ac-ratio.component.css'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class AcRatioComponent implements AfterViewInit, OnDestroy {
-  private lastHostDimension: [number, number];
-  private intervalId;
+  private lastHostDimension: [number, number] | null = null;
+  private intervalId: number | null = null;
 
   private _targetRatio: number = 16 / 9;
   private _sizingMode: AcSizingMode = AcSizingMode.MATCH_PARENT;
-  private _horizontalAlignment: AcHorizontalAlignment =
-    AcHorizontalAlignment.CENTER;
+  private _horizontalAlignment: AcHorizontalAlignment = AcHorizontalAlignment.CENTER;
   private _verticalAlignment: AcVerticalAlignment = AcVerticalAlignment.CENTER;
   private _backgroundColorStr: string = 'rgba(0,0,0,0)';
 
@@ -83,10 +85,10 @@ export class AcRatioComponent implements AfterViewInit, OnDestroy {
   }
 
   @ViewChild('acRatioInner')
-  acRatioInner: ElementRef;
+  acRatioInner!: ElementRef;
 
   @ViewChild('contentWrapper')
-  acContentWrapper: ElementRef;
+  acContentWrapper!: ElementRef;
 
   constructor(private renderer: Renderer2, private hostElem: ElementRef) {}
 
@@ -110,9 +112,9 @@ export class AcRatioComponent implements AfterViewInit, OnDestroy {
       const hostHeight = this.hostElem.nativeElement.offsetHeight;
 
       if (
-        this.lastHostDimension == null ||
-        hostWidth != this.lastHostDimension[0] ||
-        hostHeight != this.lastHostDimension[1]
+        !this.lastHostDimension ||
+        hostWidth !== this.lastHostDimension[0] ||
+        hostHeight !== this.lastHostDimension[1]
       ) {
         this.lastHostDimension = [hostWidth, hostHeight];
         this.calculateAndSetAspect();
@@ -159,8 +161,7 @@ export class AcRatioComponent implements AfterViewInit, OnDestroy {
 
       // Add +1 to the dimensions because decimals get rounded
       const contentWidth = this.acContentWrapper.nativeElement.offsetWidth + 1;
-      const contentHeight =
-        this.acContentWrapper.nativeElement.offsetHeight + 1;
+      const contentHeight = this.acContentWrapper.nativeElement.offsetHeight + 1;
 
       const currentRatio = contentWidth / contentHeight;
       if (currentRatio >= this._targetRatio) {
@@ -216,35 +217,19 @@ export class AcRatioComponent implements AfterViewInit, OnDestroy {
   }
 
   private setAcInnerWidth(width: number) {
-    this.renderer.setStyle(
-      this.acRatioInner.nativeElement,
-      'width',
-      `${width}px`
-    );
+    this.renderer.setStyle(this.acRatioInner.nativeElement, 'width', `${width}px`);
   }
 
   private setAcInnerHeight(height: number) {
-    this.renderer.setStyle(
-      this.acRatioInner.nativeElement,
-      'height',
-      `${height}px`
-    );
+    this.renderer.setStyle(this.acRatioInner.nativeElement, 'height', `${height}px`);
   }
 
   private justifyContentHorizontally(alignment: string = 'center'): void {
-    this.renderer.setStyle(
-      this.hostElem.nativeElement,
-      'justify-content',
-      alignment
-    );
+    this.renderer.setStyle(this.hostElem.nativeElement, 'justify-content', alignment);
   }
 
   private alignItemsVertically(alignment: string = 'center'): void {
-    this.renderer.setStyle(
-      this.hostElem.nativeElement,
-      'align-items',
-      alignment
-    );
+    this.renderer.setStyle(this.hostElem.nativeElement, 'align-items', alignment);
   }
 
   private removeContenCentering(): void {
@@ -254,36 +239,19 @@ export class AcRatioComponent implements AfterViewInit, OnDestroy {
 
   private setContentWrapperBackground(): void {
     if (this.acContentWrapper != null) {
-      this.renderer.setStyle(
-        this.acContentWrapper.nativeElement,
-        'background-color',
-        this._backgroundColorStr
-      );
+      this.renderer.setStyle(this.acContentWrapper.nativeElement, 'background-color', this._backgroundColorStr);
     } else {
-      console.warn(
-        'Content Wrapper is undefined in "setContentWrapperBackground()"'
-      );
+      console.warn('Content Wrapper is undefined in "setContentWrapperBackground()"');
     }
   }
 
   private disableContentExpanding() {
     this.renderer.removeStyle(this.acContentWrapper.nativeElement, 'min-width');
-    this.renderer.removeStyle(
-      this.acContentWrapper.nativeElement,
-      'min-height'
-    );
+    this.renderer.removeStyle(this.acContentWrapper.nativeElement, 'min-height');
   }
 
   private enableContentExpanding() {
-    this.renderer.setStyle(
-      this.acContentWrapper.nativeElement,
-      'min-width',
-      '100%'
-    );
-    this.renderer.setStyle(
-      this.acContentWrapper.nativeElement,
-      'min-height',
-      '100%'
-    );
+    this.renderer.setStyle(this.acContentWrapper.nativeElement, 'min-width', '100%');
+    this.renderer.setStyle(this.acContentWrapper.nativeElement, 'min-height', '100%');
   }
 }

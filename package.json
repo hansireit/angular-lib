@@ -3,7 +3,8 @@
   "version": "16.0.1",
   "license": "MIT",
   "scripts": {
-    "build:angular-base-dao": "nx run angular-base-dao:build"
+    "build:angular-base-dao": "nx run angular-base-dao:build",
+    "build:angular-aspect-container": "nx run angular-aspect-container:build"
   },
   "private": true,
   "dependencies": {
