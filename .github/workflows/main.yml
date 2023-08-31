@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
-      - run: npm ci
+      - run: yarn install --frozen-lockfile
       - run: nx run-many --target=lint --all
       - run: nx run-many --target=test --all --ci --code-coverage
       - run: nx run-many --target=build --all
