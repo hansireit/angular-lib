@@ -10,16 +10,24 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "angular-aspect-container": ["libs/angular-aspect-container/src/index.ts"],
-      "angular-base-dao": ["libs/angular-base-dao/src/index.ts"],
-      "angular-base-form": ["libs/angular-base-form/src/index.ts"],
-      "angular-item-picker": ["libs/angular-item-picker/src/index.ts"]
+      "angular-base-dao": [
+        "libs/angular-base-dao/src/index.ts"
+      ],
+      "angular-base-form": [
+        "libs/angular-base-form/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
