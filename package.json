@@ -1,10 +1,10 @@
 {
   "name": "angular-lib",
-  "version": "16.0.1",
+  "version": "16.0.2",
   "license": "MIT",
   "scripts": {
     "build:angular-base-dao": "nx run angular-base-dao:build",
-    "build:angular-aspect-container": "nx run angular-aspect-container:build"
+    "lint": "nx run-many --target=lint --all"
   },
   "private": true,
   "dependencies": {
