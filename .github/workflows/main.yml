@@ -1,0 +1,17 @@
+name: Build-CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v3
+      - run: npm ci
+      - run: nx run-many --target=lint --all
+      - run: nx run-many --target=test --all --ci --code-coverage
+      - run: nx run-many --target=build --all
