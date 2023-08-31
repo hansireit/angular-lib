@@ -10,8 +10,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/angular-base-form/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": true
+        "project": "libs/angular-base-form/ng-package.json"
       },
       "configurations": {
         "production": {
@@ -41,7 +40,11 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/angular-base-form/**/*.ts", "libs/angular-base-form/**/*.html"]
+        "lintFilePatterns": [
+          "libs/angular-base-form/**/*.ts",
+          "libs/angular-base-form/**/*.html",
+          "libs/my-lib/package.json"
+        ]
       }
     }
   }
