@@ -28,12 +28,6 @@
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
       "rules": {}
-    },
-    {
-      "files": ["package.json"],
-      "rules": {
-        "@nx/dependency-checks": 0
-      }
     }
   ]
 }

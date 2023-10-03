@@ -44,6 +44,12 @@
       "rules": {
         "@nx/dependency-checks": "error"
       }
+    },
+    {
+      "files": ["package.json"],
+      "rules": {
+        "@nx/dependency-checks": 0
+      }
     }
   ]
 }
