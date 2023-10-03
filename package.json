@@ -3,6 +3,8 @@
   "version": "16.0.2",
   "license": "MIT",
   "scripts": {
+    "build": "nx run-many --target=build --all",
+    "build:angular-base": "nx run angular-base:build",
     "build:angular-base-dao": "nx run angular-base-dao:build",
     "lint": "nx run-many --target=lint --all"
   },
