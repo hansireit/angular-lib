@@ -1,0 +1,38 @@
+{
+  "name": "extract-from-argv",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/extract-from-argv/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/extract-from-argv",
+        "main": "libs/extract-from-argv/src/index.ts",
+        "tsConfig": "libs/extract-from-argv/tsconfig.lib.json",
+        "assets": ["libs/extract-from-argv/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs extract-from-argv {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/extract-from-argv/**/*.ts", "libs/extract-from-argv/package.json"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/extract-from-argv"
+      }
+    }
+  },
+  "tags": []
+}
