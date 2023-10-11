@@ -21,9 +21,9 @@ export interface UserModel implements IIdentifiable {
 **Step 2: Create an entity-dao-service, which extends from the NoConversionHttpBaseDao-class**
 
 By default, the service will set **withCredentials** to true, to make use of http-only cookie authentication.
-If this is not wanted, you can specify it super-constructor call.
+If this is not wanted, you can specify it in the super-constructor call.
 
-If you want to prefer a different kind of authentication method, you can pass custom http-headers to the affected **CRUDL** method. (`this.dao.list(false, { ...httpOptions })`)
+If you prefer a different kind of authentication method, you can pass custom http-headers to the affected **CRUDL** method. (`this.dao.list(false, { ...httpOptions })`)
 
 ```ts
 @Injectable({ providedIn: 'root' })
