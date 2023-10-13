@@ -4,10 +4,10 @@ import { inject } from '@angular/core';
 import { DEFAULT_OPTIONS, HttpBaseDaoV2Options } from '../http-base-dao-v2-options';
 import { DaoId } from '../dao-id';
 
-export abstract class InternalHttpBaseDaoV2<TI> {
+export abstract class InternalHttpBaseDaoV2<TI, TM = TI> {
   protected readonly http = inject(HttpClient);
-  private readonly options: HttpBaseDaoV2Options;
-  private readonly routeUrl: string;
+  protected readonly options: HttpBaseDaoV2Options;
+  protected readonly routeUrl: string;
 
   protected constructor(routeUrl: string, options: HttpBaseDaoV2Options = {}) {
     this.routeUrl = routeUrl;
@@ -21,7 +21,7 @@ export abstract class InternalHttpBaseDaoV2<TI> {
     return this.http.get<TI[]>(this.routeUrl, this.mergeCustomOptions(customOptions));
   }
 
-  protected createInternal(entry: TI, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
+  protected createInternal(entry: Partial<TI>, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
     if (!entry) {
       throw new Error('Entry must exist to be created');
     }

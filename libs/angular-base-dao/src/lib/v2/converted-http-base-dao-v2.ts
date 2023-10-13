@@ -3,12 +3,8 @@ import { HttpBaseDaoV2Options } from './http-base-dao-v2-options';
 import { DaoId } from './dao-id';
 import { InternalHttpBaseDaoV2 } from './internal/internal-http-base-dao-v2';
 import { ConverterV2 } from './converter-v2';
-import { IObservableDao } from './i-observable-dao';
 
-export abstract class ConvertedHttpBaseDaoV2<TI, TM>
-  extends InternalHttpBaseDaoV2<TI>
-  implements IObservableDao<TI, TM>
-{
+export abstract class ConvertedHttpBaseDaoV2<TI, TM> extends InternalHttpBaseDaoV2<TI, TM> {
   protected readonly converter: ConverterV2<TI, TM>;
   protected constructor(routeUrl: string, converter: ConverterV2<TI, TM>, options: HttpBaseDaoV2Options = {}) {
     super(routeUrl, options);
@@ -19,12 +15,14 @@ export abstract class ConvertedHttpBaseDaoV2<TI, TM>
     return this.listInternal(customOptions).pipe(this.mapServerInterfaceListToModelList);
   }
 
-  create(entry: TI, customOptions: HttpBaseDaoV2Options = {}): Observable<TM> {
-    return this.createInternal(entry, customOptions).pipe(this.mapServerInterfaceToModel);
+  create(entry: TM, customOptions: HttpBaseDaoV2Options = {}): Observable<TM> {
+    const createData = this.converter.toJson(entry);
+    return this.createInternal(createData, customOptions).pipe(this.mapServerInterfaceToModel);
   }
 
-  update(id: string | number, entry: Partial<TI>, customOptions: HttpBaseDaoV2Options = {}): Observable<TM> {
-    return this.updateInternal(id, entry, customOptions).pipe(this.mapServerInterfaceToModel);
+  update(id: string | number, entry: Partial<TM>, customOptions: HttpBaseDaoV2Options = {}): Observable<TM> {
+    const updateData = this.converter.toJson(entry);
+    return this.updateInternal(id, updateData, customOptions).pipe(this.mapServerInterfaceToModel);
   }
 
   delete(id: DaoId, customOptions: HttpBaseDaoV2Options = {}): Observable<TM> {

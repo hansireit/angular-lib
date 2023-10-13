@@ -2,9 +2,8 @@ import { firstValueFrom } from 'rxjs';
 import { HttpBaseDaoV2Options } from './http-base-dao-v2-options';
 import { DaoId } from './dao-id';
 import { InternalHttpBaseDaoV2 } from './internal/internal-http-base-dao-v2';
-import { IPromiseDao } from './i-promise-dao';
 
-export abstract class PromiseHttpBaseDaoV2<TI> extends InternalHttpBaseDaoV2<TI> implements IPromiseDao<TI, TI> {
+export abstract class PromiseHttpBaseDaoV2<TI> extends InternalHttpBaseDaoV2<TI> {
   protected constructor(routeUrl: string, options: HttpBaseDaoV2Options = {}) {
     super(routeUrl, options);
   }
