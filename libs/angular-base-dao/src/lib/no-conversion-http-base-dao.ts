@@ -4,6 +4,10 @@ import { Dao } from './dao';
 import { IIdentifiable } from './interfaces/i-identifiable';
 import { inject } from '@angular/core';
 
+/**
+ * Please use PromiseHttpBaseDaoV2 instead
+ * @deprecated
+ */
 export abstract class NoConversionHttpBaseDao<TI extends IIdentifiable> implements Dao<TI> {
   protected readonly routeUrl: string;
   protected readonly http = inject(HttpClient);

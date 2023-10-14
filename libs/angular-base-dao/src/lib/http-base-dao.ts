@@ -4,6 +4,10 @@ import { Dao } from './dao';
 import { IConverter } from './interfaces/i-converter';
 import { IIdentifiable } from './interfaces/i-identifiable';
 
+/**
+ * Please use ConvertedPromiseHttpBaseDaoV2 instead
+ * @deprecated
+ */
 export abstract class HttpBaseDao<TI, TM extends IIdentifiable> implements Dao<TM> {
   protected readonly routeUrl: string;
   protected readonly http: HttpClient;
