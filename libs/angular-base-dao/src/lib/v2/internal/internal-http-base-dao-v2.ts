@@ -4,7 +4,7 @@ import { inject } from '@angular/core';
 import { DEFAULT_OPTIONS, HttpBaseDaoV2Options } from '../http-base-dao-v2-options';
 import { DaoId } from '../dao-id';
 
-export abstract class InternalHttpBaseDaoV2<TI, TM = TI> {
+export abstract class InternalHttpBaseDaoV2<TI> {
   protected readonly http = inject(HttpClient);
   protected readonly options: HttpBaseDaoV2Options;
   protected readonly routeUrl: string;

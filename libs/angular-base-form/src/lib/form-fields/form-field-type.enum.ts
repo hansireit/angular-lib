@@ -1,6 +1,6 @@
 export enum FormFieldType {
   TEXT = 'text',
-  TEXTAREA = 'text',
+  TEXTAREA = 'textarea',
   NUMBER = 'number',
   EMAIL = 'email',
   CHECKBOX = 'checkbox',
