@@ -4,7 +4,7 @@ import { DaoId } from './dao-id';
 import { InternalHttpBaseDaoV2 } from './internal/internal-http-base-dao-v2';
 import { ConverterV2 } from './converter-v2';
 
-export abstract class ConvertedHttpBaseDaoV2<TI, TM> extends InternalHttpBaseDaoV2<TI, TM> {
+export abstract class ConvertedHttpBaseDaoV2<TI, TM> extends InternalHttpBaseDaoV2<TI> {
   protected readonly converter: ConverterV2<TI, TM>;
   protected constructor(routeUrl: string, converter: ConverterV2<TI, TM>, options: HttpBaseDaoV2Options = {}) {
     super(routeUrl, options);
