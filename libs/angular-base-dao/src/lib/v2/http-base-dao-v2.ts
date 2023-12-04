@@ -12,11 +12,11 @@ export abstract class HttpBaseDaoV2<TI> extends InternalHttpBaseDaoV2<TI> {
     return this.listInternal(customOptions);
   }
 
-  create(entry: TI, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
+  create(entry: Partial<TI>, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
     return this.createInternal(entry, customOptions);
   }
 
-  update(id: string | number, entry: Partial<TI>, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
+  update(id: DaoId, entry: Partial<TI>, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
     return this.updateInternal(id, entry, customOptions);
   }
 

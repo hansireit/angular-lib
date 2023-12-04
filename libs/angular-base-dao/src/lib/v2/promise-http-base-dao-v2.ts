@@ -12,12 +12,12 @@ export abstract class PromiseHttpBaseDaoV2<TI> extends InternalHttpBaseDaoV2<TI>
     return firstValueFrom(this.listInternal(customOptions));
   }
 
-  create(entry: TI, customOptions: HttpBaseDaoV2Options = {}): Promise<TI> {
-    return firstValueFrom(this.createInternal(entry, customOptions));
+  create(data: object, customOptions: HttpBaseDaoV2Options = {}): Promise<TI> {
+    return firstValueFrom(this.createInternal(data, customOptions));
   }
 
-  update(id: string | number, entry: Partial<TI>, customOptions: HttpBaseDaoV2Options = {}): Promise<TI> {
-    return firstValueFrom(this.updateInternal(id, entry, customOptions));
+  update(id: DaoId, data: object, customOptions: HttpBaseDaoV2Options = {}): Promise<TI> {
+    return firstValueFrom(this.updateInternal(id, data, customOptions));
   }
 
   delete(id: DaoId, customOptions: HttpBaseDaoV2Options = {}): Promise<TI> {

@@ -22,7 +22,7 @@ export abstract class ConvertedPromiseHttpBaseDaoV2<TI, TM> extends InternalHttp
     );
   }
 
-  update(id: string | number, entry: Partial<TM>, customOptions: HttpBaseDaoV2Options = {}): Promise<TM> {
+  update(id: DaoId, entry: Partial<TM>, customOptions: HttpBaseDaoV2Options = {}): Promise<TM> {
     const updateData = this.converter.toJson(entry);
     return firstValueFrom(
       this.updateInternal(id, updateData, customOptions).pipe(this.mapServerInterfaceToModel.bind(this)),

@@ -20,7 +20,7 @@ export abstract class ConvertedHttpBaseDaoV2<TI, TM> extends InternalHttpBaseDao
     return this.createInternal(createData, customOptions).pipe(this.mapServerInterfaceToModel);
   }
 
-  update(id: string | number, entry: Partial<TM>, customOptions: HttpBaseDaoV2Options = {}): Observable<TM> {
+  update(id: DaoId, entry: Partial<TM>, customOptions: HttpBaseDaoV2Options = {}): Observable<TM> {
     const updateData = this.converter.toJson(entry);
     return this.updateInternal(id, updateData, customOptions).pipe(this.mapServerInterfaceToModel);
   }

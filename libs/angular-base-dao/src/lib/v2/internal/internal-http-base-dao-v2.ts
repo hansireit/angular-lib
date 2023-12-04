@@ -13,7 +13,7 @@ export abstract class InternalHttpBaseDaoV2<TI> {
     this.routeUrl = routeUrl;
     this.options = {
       ...DEFAULT_OPTIONS,
-      ...options,
+      ...options
     };
   }
 
@@ -21,24 +21,20 @@ export abstract class InternalHttpBaseDaoV2<TI> {
     return this.http.get<TI[]>(this.routeUrl, this.mergeCustomOptions(customOptions));
   }
 
-  protected createInternal(entry: Partial<TI>, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
-    if (!entry) {
+  protected createInternal(data: object, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
+    if (!data) {
       throw new Error('Entry must exist to be created');
     }
 
-    return this.http.post<TI>(this.routeUrl, entry, this.mergeCustomOptions(customOptions));
+    return this.http.post<TI>(this.routeUrl, data, this.mergeCustomOptions(customOptions));
   }
 
-  protected updateInternal(
-    id: string | number,
-    entry: Partial<TI>,
-    customOptions: HttpBaseDaoV2Options = {},
-  ): Observable<TI> {
+  protected updateInternal(id: DaoId, data: object, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
     if (!id) {
       throw new Error('Entry must exist to be updated');
     }
 
-    return this.http.put<TI>(this.routeUrl + '/' + id, entry, this.mergeCustomOptions(customOptions));
+    return this.http.put<TI>(this.routeUrl + '/' + id, data, this.mergeCustomOptions(customOptions));
   }
 
   protected deleteInternal(id: DaoId, customOptions: HttpBaseDaoV2Options = {}): Observable<TI> {
@@ -55,7 +51,7 @@ export abstract class InternalHttpBaseDaoV2<TI> {
   private mergeCustomOptions(customOptions: HttpBaseDaoV2Options): HttpBaseDaoV2Options {
     return {
       ...this.options,
-      ...customOptions,
+      ...customOptions
     };
   }
 }
