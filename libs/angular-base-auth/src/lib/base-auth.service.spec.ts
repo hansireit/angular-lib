@@ -2,7 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { BaseAuthService, LoggedInAuthState, NotLoggedInAuthState, PendingAuthState } from 'angular-base-auth';
+import { BaseAuthService } from './base-auth.service';
+import { LoggedInAuthState, NotLoggedInAuthState, PendingAuthState } from './models';
 
 interface User {
   name: string;
