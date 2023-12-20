@@ -31,14 +31,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/angular-base/**/*.ts",
-          "libs/angular-base/**/*.html",
-          "libs/angular-base/package.json"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     }
   }
 }
