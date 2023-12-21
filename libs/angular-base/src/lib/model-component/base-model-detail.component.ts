@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationService } from '../navigation/navigation.service';
 import { ModelAction } from './action';
-import { Identifiable } from '../interfaces/identifiable';
+import { Identifiable } from 'angular-base-dao';
 
 export abstract class BaseModelDetailComponent<TM extends Identifiable> {
   model: TM | null = null;

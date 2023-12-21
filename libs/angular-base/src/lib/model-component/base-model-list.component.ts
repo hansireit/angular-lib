@@ -1,8 +1,7 @@
 import { BaseModelComponent } from './base-model.component';
 import { MatTableDataSource } from '@angular/material/table';
-import { Identifiable } from '../interfaces/identifiable';
 import { ModelAction } from './action';
-import { DaoId } from 'angular-base-dao';
+import { DaoId, Identifiable } from 'angular-base-dao';
 
 export abstract class BaseModelListComponent<TM extends Identifiable> extends BaseModelComponent<TM> {
   readonly dataSource = new MatTableDataSource<TM>([]);
