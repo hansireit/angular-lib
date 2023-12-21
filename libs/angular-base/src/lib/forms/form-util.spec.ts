@@ -100,4 +100,49 @@ describe('FormUtil', () => {
       date: { day: null }
     });
   });
+
+  it('should get an object that only contains the changes of two objects', () => {
+    const oldObject = {
+      name: 'Tester',
+      age: 23,
+      address: {
+        street: 'My street'
+      }
+    };
+    const newObject = {
+      name: 'Tester',
+      age: 21,
+      address: {
+        street: 'My new street'
+      }
+    };
+    const update = {};
+    FormUtil.getUpdatedFormData(update, oldObject, newObject);
+    expect(update).toStrictEqual({
+      age: 21,
+      address: {
+        street: 'My new street'
+      }
+    });
+  });
+
+  it('should not get updates if the old and new object have the same content', () => {
+    const oldObject = {
+      name: 'Tester',
+      age: 23,
+      address: {
+        street: 'My street'
+      }
+    };
+    const newObject = {
+      name: 'Tester',
+      age: 23,
+      address: {
+        street: 'My street'
+      }
+    };
+    const update = {};
+    FormUtil.getUpdatedFormData(update, oldObject, newObject);
+    expect(update).toStrictEqual({});
+  });
 });
