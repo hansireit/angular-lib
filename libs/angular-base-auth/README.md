@@ -1,5 +1,8 @@
+> IMPORANT: This library will be merged and moved into 'angular-base-lib' in the future
+
 # Angular Base Authentication
 This library contains an abstract auth-service and guards that can be used out of the box, by just extending the `BaseAuthService<TUSER>`.
+
 
 ## Usage
 

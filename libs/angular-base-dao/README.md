@@ -1,3 +1,5 @@
+> IMPORANT: This library will be merged and moved into 'angular-base-lib' in the future
+
 # AngularBaseDao
 
 This library helps you to create dao-services that include all **CURDL** methods out of the box without needing to implement them by your own.

@@ -1,7 +1,12 @@
 {
   "name": "angular-base-lib",
-  "version": "17.0.2",
-  "description": "Angular model-components, navigation-service and other abstract helpers",
+  "version": "17.0.4",
+  "description": "Angular dao-feature, auth, model-components, navigation-service and other abstract helpers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hansireit/angular-lib",
+    "directory": "libs/angular-base"
+  },
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
@@ -13,7 +18,14 @@
   "sideEffects": false,
   "keywords": [
     "angular",
+    "CRUDL",
+    "HTTP",
+    "Rest",
+    "Angular",
     "util",
-    "navigation"
+    "navigation",
+    "auth",
+    "authentication",
+    "guards"
   ]
 }
