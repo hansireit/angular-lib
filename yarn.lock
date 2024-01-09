@@ -15063,13 +15063,13 @@ vite@4.5.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vite@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-5.0.0.tgz#3bfb65acda2a97127e4fa240156664a1f234ce08"
-  integrity sha512-ESJVM59mdyGpsiNAeHQOR/0fqNoOyWPYesFto8FFZugfmhdHx8Fzd8sF3Q/xkVhZsyOxHfdM7ieiVAorI9RjFw==
+vite@5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-5.0.5.tgz#3eebe3698e3b32cea36350f58879258fec858a3c"
+  integrity sha512-OekeWqR9Ls56f3zd4CaxzbbS11gqYkEiBtnWFFgYR2WV8oPJRRKq0mpskYy/XaoCL3L7VINDhqqOMNDiYdGvGg==
   dependencies:
     esbuild "^0.19.3"
-    postcss "^8.4.31"
+    postcss "^8.4.32"
     rollup "^4.2.0"
   optionalDependencies:
     fsevents "~2.3.3"
