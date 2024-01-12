@@ -1,7 +1,8 @@
 {
   "name": "angular-base-lib",
-  "version": "17.0.5",
+  "version": "17.0.6",
   "description": "Angular dao-feature, auth, model-components, navigation-service and other abstract helpers",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/hansireit/angular-lib",
