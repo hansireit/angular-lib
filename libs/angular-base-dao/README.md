@@ -1,4 +1,4 @@
-> IMPORANT: This library will be merged and moved into 'angular-base-lib' in the future
+> IMPORANT: This package is moved into **'angular-base-lib'** 
 
 # AngularBaseDao
 
