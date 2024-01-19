@@ -19,6 +19,7 @@
       "angular-base-auth": ["libs/angular-base-auth/src/index.ts"],
       "angular-base-dao": ["libs/angular-base-dao/src/index.ts"],
       "angular-base-form": ["libs/angular-base-form/src/index.ts"],
+      "angular-overflow-indicator": ["libs/angular-overflow-indicator/src/index.ts"],
       "extract-from-argv": ["libs/extract-from-argv/src/index.ts"]
     }
   },
