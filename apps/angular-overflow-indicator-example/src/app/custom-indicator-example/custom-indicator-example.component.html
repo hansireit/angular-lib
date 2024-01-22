@@ -1,0 +1,11 @@
+<div [style]="{ height: '300px', width: '500px' }">
+  <ng-template #customButton>
+    <button (click)="view.scrollToBottom()">There is more below <i>👇</i></button>
+  </ng-template>
+
+  <ng-scroll-view-with-indicator #view [indicatorButton]="customButton">
+    <ul>
+      <li *ngFor="let item of items()">List item {{ item }}</li>
+    </ul>
+  </ng-scroll-view-with-indicator>
+</div>

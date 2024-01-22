@@ -4,9 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   inject,
   Input,
   OnDestroy,
+  Output,
   signal,
   TemplateRef,
   ViewChild
@@ -24,7 +26,8 @@ import { DefaultIndicatorButtonComponent } from '../default-indicator-button';
 })
 export class ScrollViewWithIndicatorComponent implements AfterViewInit, OnDestroy {
   @ViewChild('contentWrapper') contentWrapper!: ElementRef<HTMLDivElement>;
-  @Input() indicatorButton: TemplateRef<unknown> | null = null;
+  @Input({ required: true }) indicatorButton: TemplateRef<unknown> | null = null;
+  @Output() scrollState = new EventEmitter<number>();
 
   readonly isOverflowing = signal(false);
   readonly isAtBottom = signal(false);
@@ -71,5 +74,6 @@ export class ScrollViewWithIndicatorComponent implements AfterViewInit, OnDestro
     const element = this.contentWrapper.nativeElement;
     const maxScroll = element.scrollHeight - element.offsetHeight;
     this.isAtBottom.set(element.scrollTop + 1 >= maxScroll);
+    this.scrollState.emit(Math.round((100 / maxScroll) * (element.scrollTop + 1)));
   }
 }

@@ -6,6 +6,7 @@
   <ng-container *ngIf="indicatorButton; else defaultButton" [ngTemplateOutlet]="indicatorButton"></ng-container>
 
   <ng-template #defaultButton>
-    <ng-scroll-view-default-indicator-button (buttonClicked)="scrollToBottom()"></ng-scroll-view-default-indicator-button>
+    <ng-scroll-view-default-indicator-button (buttonClicked)="scrollToBottom()">
+    </ng-scroll-view-default-indicator-button>
   </ng-template>
 </div>

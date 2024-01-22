@@ -1,16 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { ScrollViewWithIndicatorComponent, ScrollViewWithIndicatorDirective } from 'angular-overflow-indicator';
-import { NgIf } from '@angular/common';
+import { Component } from '@angular/core';
+import { CustomIndicatorExampleComponent } from './custom-indicator-example/custom-indicator-example.component';
+import { ScrollStateExampleComponent } from './scroll-state-example/scroll-state-example.component';
 
 @Component({
   standalone: true,
-  imports: [ScrollViewWithIndicatorDirective, NgIf, ScrollViewWithIndicatorComponent],
+  imports: [CustomIndicatorExampleComponent, ScrollStateExampleComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'angular-overflow-indicator-example';
-
-  counter = signal(0);
-}
+export class AppComponent {}
