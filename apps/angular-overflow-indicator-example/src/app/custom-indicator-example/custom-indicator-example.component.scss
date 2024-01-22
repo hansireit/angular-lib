@@ -1,0 +1,54 @@
+button {
+  margin-bottom: 0.4rem;
+  border: none;
+  background-color: #313131;
+  color: #ffffff;
+  border-radius: 1rem;
+  padding: 0.4rem 0.8rem;
+  transition: 0.1s ease-in-out;
+
+  @keyframes icon-animation {
+    0% {
+      transform: translateY(0);
+    }
+
+    20% {
+      transform: translateY(-0.2rem);
+    }
+
+    50% {
+      transform: translateY(0.2rem);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  i {
+    display: inline-block;
+    margin-left: 0.2rem;
+    animation-name: icon-animation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.4rem;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0.4rem;
+    }
+  }
+}

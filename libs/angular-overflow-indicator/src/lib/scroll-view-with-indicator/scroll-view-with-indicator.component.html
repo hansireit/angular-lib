@@ -1,0 +1,12 @@
+<div class="content-wrapper" #contentWrapper (scroll)="onScroll()">
+  <ng-content></ng-content>
+</div>
+
+<div class="scroll-indicator" *ngIf="isOverflowing() && !isAtBottom()">
+  <ng-container *ngIf="indicatorButton; else defaultButton" [ngTemplateOutlet]="indicatorButton"></ng-container>
+
+  <ng-template #defaultButton>
+    <ng-scroll-view-default-indicator-button (buttonClicked)="scrollToBottom()">
+    </ng-scroll-view-default-indicator-button>
+  </ng-template>
+</div>
