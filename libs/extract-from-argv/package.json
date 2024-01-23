@@ -1,6 +1,13 @@
 {
   "name": "extract-from-argv",
-  "version": "0.0.2",
+  "description": "Extracts arguments that were passed when the Node.js process was launched.",
+  "license": "MIT",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hansireit/angular-lib",
+    "directory": "libs/extract-from-argv"
+  },
   "dependencies": {
     "tslib": "^2.3.0"
   },

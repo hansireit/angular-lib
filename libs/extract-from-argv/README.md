@@ -1,5 +1,7 @@
 # extract-from-argv
 
+Extracts arguments that were passed when the Node.js process was launched.
+
 ## Usage
 
 **Pass arguments to the node process and read it**
