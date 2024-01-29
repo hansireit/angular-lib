@@ -3,7 +3,7 @@
 </div>
 
 <div class="scroll-indicator" *ngIf="isOverflowing() && !isAtBottom()">
-  <ng-container *ngIf="indicatorButton; else defaultButton" [ngTemplateOutlet]="indicatorButton"></ng-container>
+  <ng-container *ngIf="indicatorButton(); else defaultButton" [ngTemplateOutlet]="indicatorButton()"></ng-container>
 
   <ng-template #defaultButton>
     <ng-scroll-view-default-indicator-button (buttonClicked)="scrollToBottom()">

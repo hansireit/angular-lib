@@ -6,7 +6,7 @@ import {
   ElementRef,
   EventEmitter,
   inject,
-  Input,
+  input,
   OnDestroy,
   Output,
   signal,
@@ -26,9 +26,9 @@ import { DefaultIndicatorButtonComponent } from '../default-indicator-button';
 })
 export class ScrollViewWithIndicatorComponent implements AfterViewInit, OnDestroy {
   @ViewChild('contentWrapper') contentWrapper!: ElementRef<HTMLDivElement>;
-  @Input({ required: true }) indicatorButton: TemplateRef<unknown> | null = null;
   @Output() scrollState = new EventEmitter<number>();
 
+  readonly indicatorButton = input.required<TemplateRef<unknown>>();
   readonly isOverflowing = signal(false);
   readonly isAtBottom = signal(false);
 
