@@ -31,9 +31,8 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/angular-base-form", "libs/my-lib/package.json"]
+        "lintFilePatterns": ["libs/angular-base-form"]
       }
     }
   }
