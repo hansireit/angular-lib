@@ -1,6 +1,6 @@
 {
   "name": "angular-overflow-indicator",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A simple and performant component that displays a given button if the content of the component overflows",
   "license": "MIT",
   "repository": {

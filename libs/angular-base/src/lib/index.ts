@@ -5,3 +5,4 @@ export * from './types';
 export * from './util';
 export * from './auth';
 export * from './dao';
+export * from './base';
