@@ -6,11 +6,11 @@
     "url": "https://github.com/hansireit/angular-lib",
     "directory": "libs/angular-base-auth"
   },
-  "version": "17.3.0",
+  "version": "18.0.1",
   "peerDependencies": {
     "rxjs": "~7.8.0",
-    "@angular/core": "^17.0.0",
-    "@angular/router": "^17.0.0"
+    "@angular/core": "^18.0.0",
+    "@angular/router": "^18.0.0"
   },
   "dependencies": {},
   "sideEffects": false,
