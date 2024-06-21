@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 
 @Component({
   selector: 'ng-scroll-view-default-indicator-button',
@@ -23,5 +23,5 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DefaultIndicatorButtonComponent {
-  @Output() buttonClicked = new EventEmitter();
+  buttonClicked = output();
 }

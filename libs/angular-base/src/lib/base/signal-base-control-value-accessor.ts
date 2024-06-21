@@ -1,25 +1,32 @@
 import { ControlValueAccessor } from '@angular/forms';
-import { Directive, effect, EventEmitter, model, Output } from '@angular/core';
+import { Directive, effect, EventEmitter, model, Output, signal } from '@angular/core';
 import { ValueChangeCallback } from '../types/value-change-callback.type';
 
 @Directive()
 export abstract class SignalBaseControlValueAccessor<T = string> implements ControlValueAccessor {
-  @Output() valueChanged: EventEmitter<T> = new EventEmitter<T>();
+  private onChange: ValueChangeCallback<T> | null = null;
+  private onTouched: VoidFunction | null = null;
 
-  onChange: ValueChangeCallback<T> | null = null;
-  onTouched: VoidFunction | null = null;
+  value = model<T>();
 
-  protected value = model<T>();
+  readonly disabled = signal(false);
 
-  protected constructor() {
-    effect(() => {
-      const newValue = this.value();
-      if (newValue) {
-        this.markAsTouched();
-        this.onChange?.(newValue);
-        this.valueChanged.emit(newValue);
-      }
-    });
+  /**
+   * Function that will be called by the input to update the value of the form-control and the model
+   * @param value The new input value passed by $event in the template
+   */
+  valueChanged(value: T): void {
+    if (this.disabled()) {
+      return;
+    }
+
+    if (value === this.value()) {
+      return;
+    }
+
+    this.onTouched?.();
+    this.onChange?.(value);
+    this.value.set(value);
   }
 
   writeValue(value: T): void {
@@ -34,9 +41,7 @@ export abstract class SignalBaseControlValueAccessor<T = string> implements Cont
     this.onTouched = onTouched;
   }
 
-  markAsTouched(): void {
-    if (this.onTouched) {
-      this.onTouched();
-    }
+  setDisabledState(disabled: boolean): void {
+    this.disabled.set(disabled);
   }
 }
