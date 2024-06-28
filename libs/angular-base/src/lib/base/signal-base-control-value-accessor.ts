@@ -1,5 +1,5 @@
 import { ControlValueAccessor } from '@angular/forms';
-import { Directive, effect, EventEmitter, model, Output, signal } from '@angular/core';
+import { Directive, model, signal } from '@angular/core';
 import { ValueChangeCallback } from '../types/value-change-callback.type';
 
 @Directive()

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { HttpClient, HttpHeaders, provideHttpClient } from '@angular/common/http';
 import { InternalHttpBaseDao } from './internal-http-base-dao';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable, of } from 'rxjs';
@@ -31,8 +31,7 @@ describe('InternalHttpBaseDao', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [InternalHttpBaseDaoImpl],
+      providers: [InternalHttpBaseDaoImpl, provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(InternalHttpBaseDaoImpl);
     http = TestBed.inject(HttpClient);

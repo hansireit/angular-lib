@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { HttpClient, HttpHeaders, provideHttpClient } from '@angular/common/http';
 import { InternalHttpBaseDaoV2 } from './internal-http-base-dao-v2';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable, of } from 'rxjs';
@@ -16,7 +16,7 @@ const mockedHeaders = { foo: 'bar' } as unknown as HttpHeaders;
 class InternalHttpBaseDaoV2Impl extends InternalHttpBaseDaoV2<Entity> {
   constructor() {
     super(entityUrl, {
-      headers: mockedHeaders,
+      headers: mockedHeaders
     });
   }
 
@@ -31,8 +31,7 @@ describe('InternalHttpBaseDaoV2', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [InternalHttpBaseDaoV2Impl],
+      providers: [InternalHttpBaseDaoV2Impl, provideHttpClient(), provideHttpClientTesting()]
     });
     service = TestBed.inject(InternalHttpBaseDaoV2Impl);
     http = TestBed.inject(HttpClient);

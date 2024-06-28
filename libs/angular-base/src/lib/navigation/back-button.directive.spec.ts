@@ -20,7 +20,6 @@ describe('NavigationService', () => {
       back: jest.fn()
     };
     fixture = TestBed.configureTestingModule({
-      imports: [TestingComponent, BackButtonDirective],
       providers: [{ provide: NavigationService, useValue: navigationServiceMock }]
     }).createComponent(TestingComponent);
 

@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { BaseAuthService } from './base-auth.service';
 import { LoggedInAuthState, NotLoggedInAuthState, PendingAuthState } from './models';
+import { provideHttpClient } from '@angular/common/http';
 
 interface User {
   name: string;
@@ -30,8 +31,7 @@ describe('BaseAuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [TestingAuthService]
+      providers: [TestingAuthService, provideHttpClient(), provideHttpClientTesting()]
     });
     service = TestBed.inject(TestingAuthService);
   });

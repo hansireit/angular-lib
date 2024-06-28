@@ -1,14 +1,15 @@
 import { ControlValueAccessor } from '@angular/forms';
-import { Directive, EventEmitter, Input, Output } from '@angular/core';
+import { Directive, Input, output } from '@angular/core';
 import { ValueChangeCallback } from '../types/value-change-callback.type';
 
 @Directive()
 export abstract class BaseControlValueAccessor<T = string> implements ControlValueAccessor {
-  @Output() valueChanged: EventEmitter<T> = new EventEmitter<T>();
+  valueChanged = output<T>();
 
   onChange: ValueChangeCallback<T> | null = null;
   onTouched: VoidFunction | null = null;
 
+  disabled = false;
   protected _value!: T;
 
   get value(): T {
@@ -16,8 +17,16 @@ export abstract class BaseControlValueAccessor<T = string> implements ControlVal
   }
 
   @Input() set value(value: T) {
-    this.markAsTouched();
+    if (this.disabled) {
+      return;
+    }
+
+    if (this._value === value) {
+      return;
+    }
+
     this._value = value;
+    this.onTouched?.();
     this.onChange?.(this._value);
     this.valueChanged.emit(this._value);
   }
@@ -34,9 +43,7 @@ export abstract class BaseControlValueAccessor<T = string> implements ControlVal
     this.onTouched = onTouched;
   }
 
-  markAsTouched(): void {
-    if (this.onTouched) {
-      this.onTouched();
-    }
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
   }
 }
