@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "angular-aspect-ratio-container": ["libs/angular-aspect-ratio-container/src/index.ts"],
       "angular-base": ["libs/angular-base/src/index.ts"],
       "angular-base-auth": ["libs/angular-base-auth/src/index.ts"],
       "angular-base-dao": ["libs/angular-base-dao/src/index.ts"],

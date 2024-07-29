@@ -1,0 +1,90 @@
+{
+  "name": "angular-aspect-ratio-container-example",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/angular-aspect-ratio-container-example/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/angular-aspect-ratio-container-example",
+        "index": "apps/angular-aspect-ratio-container-example/src/index.html",
+        "browser": "apps/angular-aspect-ratio-container-example/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/angular-aspect-ratio-container-example/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/angular-aspect-ratio-container-example/public"
+          }
+        ],
+        "styles": ["apps/angular-aspect-ratio-container-example/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-aspect-ratio-container-example:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-aspect-ratio-container-example:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "angular-aspect-ratio-container-example:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/angular-aspect-ratio-container-example/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "angular-aspect-ratio-container-example:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/angular-aspect-ratio-container-example/browser",
+        "spa": true
+      }
+    }
+  }
+}
