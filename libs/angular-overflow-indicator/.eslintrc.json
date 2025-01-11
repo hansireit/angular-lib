@@ -21,7 +21,8 @@
             "prefix": "ng-scroll-view",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "error"
       }
     },
     {

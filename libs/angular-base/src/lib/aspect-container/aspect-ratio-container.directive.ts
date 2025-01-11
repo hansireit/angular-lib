@@ -9,7 +9,7 @@ export class AspectRatioContainerDirective implements AfterViewInit, OnDestroy {
   private readonly renderer = inject(Renderer2);
   private readonly hostElem = inject(ElementRef);
   private readonly observer: ResizeObserver;
-  targetRatio = input.required<number>({ alias: 'hdevAspectRatio' });
+  targetRatio = input.required<number>();
   sizingMode = input<SizingMode>('match-parent');
 
   constructor() {

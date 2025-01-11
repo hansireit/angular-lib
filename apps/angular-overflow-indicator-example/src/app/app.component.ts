@@ -3,10 +3,9 @@ import { CustomIndicatorExampleComponent } from './custom-indicator-example/cust
 import { ScrollStateExampleComponent } from './scroll-state-example/scroll-state-example.component';
 
 @Component({
-  standalone: true,
-  imports: [CustomIndicatorExampleComponent, ScrollStateExampleComponent],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    imports: [CustomIndicatorExampleComponent, ScrollStateExampleComponent],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {}

@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ScrollViewWithIndicatorComponent } from 'angular-overflow-indicator';
 
 @Component({
-  selector: 'app-scroll-state-example',
-  standalone: true,
-  imports: [CommonModule, ScrollViewWithIndicatorComponent],
-  templateUrl: './scroll-state-example.component.html',
-  styleUrl: './scroll-state-example.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-scroll-state-example',
+    imports: [CommonModule, ScrollViewWithIndicatorComponent],
+    templateUrl: './scroll-state-example.component.html',
+    styleUrl: './scroll-state-example.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollStateExampleComponent {
   readonly itemCount = signal(10);

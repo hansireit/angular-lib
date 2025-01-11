@@ -56,6 +56,12 @@
       "rules": {
         "@nx/dependency-checks": 0
       }
+    },
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@angular-eslint/prefer-standalone": "error"
+      }
     }
   ]
 }

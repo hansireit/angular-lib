@@ -70,5 +70,6 @@
     "@nx/angular:component": {
       "style": "scss"
     }
-  }
+  },
+  "useLegacyCache": false
 }

@@ -15,11 +15,10 @@ import { CommonModule } from '@angular/common';
 import { alignmentFlexMapping } from './alignment-flex-mapping';
 
 @Component({
-  selector: 'ng-lib-aspect-ratio',
-  templateUrl: './aspect-ration-container.component.html',
-  styleUrls: ['./aspect-ration-container.component.css'],
-  standalone: true,
-  imports: [CommonModule],
+    selector: 'ng-lib-aspect-ratio',
+    templateUrl: './aspect-ration-container.component.html',
+    styleUrls: ['./aspect-ration-container.component.css'],
+    imports: [CommonModule]
 })
 export class AspectRationComponent implements AfterViewInit, OnDestroy {
   private lastHostDimension: [number, number] | null = null;
