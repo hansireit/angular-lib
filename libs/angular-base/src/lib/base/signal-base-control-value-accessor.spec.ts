@@ -4,7 +4,6 @@ import { SignalBaseControlValueAccessor } from './signal-base-control-value-acce
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
   template: `<input [ngModel]="value()" (ngModelChange)="valueChanged($event)" />`,
   imports: [FormsModule]
 })

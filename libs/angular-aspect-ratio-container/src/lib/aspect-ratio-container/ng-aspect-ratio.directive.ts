@@ -2,8 +2,7 @@ import { ElementRef, AfterViewInit, Renderer2, OnDestroy, Directive, input, inje
 import { SizingMode } from './sizing-mode';
 
 @Directive({
-  selector: '[ngAspectRatio]',
-  standalone: true,
+  selector: '[ngAspectRatio]'
 })
 export class NgAspectRatioDirective implements AfterViewInit, OnDestroy {
   private readonly renderer = inject(Renderer2);

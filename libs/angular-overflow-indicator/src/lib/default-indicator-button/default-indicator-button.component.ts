@@ -19,7 +19,6 @@ import { ChangeDetectionStrategy, Component, output } from '@angular/core';
       margin-bottom: 0.4rem;
     }
   `,
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DefaultIndicatorButtonComponent {

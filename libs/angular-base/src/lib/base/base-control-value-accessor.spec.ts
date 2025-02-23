@@ -4,7 +4,6 @@ import { BaseControlValueAccessor } from './base-control-value-accessor';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
   template: `<input [(ngModel)]="value" />`,
   imports: [FormsModule]
 })
@@ -39,7 +38,6 @@ describe('BaseControlValueAccessor', () => {
     expect(changeFn).toHaveBeenCalledWith('Hej');
     expect(component.valueChanged.emit).toHaveBeenCalledWith('Hej');
     expect(touchFn).toHaveBeenCalled();
-
   });
 
   it('should trigger onChange and onTouch only once if the same value passed to the changed function', () => {
