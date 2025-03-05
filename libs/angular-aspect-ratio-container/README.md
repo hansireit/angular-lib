@@ -5,9 +5,9 @@ Library to fix the aspect ratio of a container.
 ## Example
 
 ```html
-<main style="width: 600px; height: 600px; display: flex; align-items: center">
-  <div [ngAspectRatio]="16 / 9" style="background-color: red">Hello</div>
-</main>
+<div class="wrapper" style="width: 100vw; height: 100vh">
+  <div [ngAspectRatio]="16 / 9" style="background-color: lightblue">Hello</div>
+</div>
 ```
 
-![Overflow indicator example](./example-aspect-ratio.png)
+![Overflow indicator example](./example-aspect-ratio.gif)

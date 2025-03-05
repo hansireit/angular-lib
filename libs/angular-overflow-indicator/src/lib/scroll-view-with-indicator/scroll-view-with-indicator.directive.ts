@@ -35,35 +35,6 @@ export class ScrollViewWithIndicatorDirective implements AfterViewInit, OnDestro
 
   ngAfterViewInit(): void {
     this.openComponent(this.libScrollViewWithIndicator);
-    // if (this.libScrollViewWithIndicator) {
-    //   const div = this.renderer.createElement("div");
-    //   div.style.position = 'relative';
-    //   div.style.bottom = '1rem';
-    //
-    //   const component = createComponent(TestComponent, {
-    //     environmentInjector: this.injector,
-    //   });
-    //   component.hostView.detectChanges();
-    //   console.log(component);
-    //   // this._elseViewRef = this.vcr.createEmbeddedView(this.libScrollViewWithIndicator, null, {
-    //   //   injector: this.vcr.injector,
-    //   // });
-    //   // console.log(this.vcr.injector);
-    //   // this._elseViewRef.detectChanges();
-    //
-    //   // this.vcr.createComponent(
-    //   //   compFactory, null, this.viewContainer.injector, [this.templateView.rootNodes])
-    //
-    //   // const view = this.libScrollViewWithIndicator.createEmbeddedView({});
-    //   // view.detectChanges();
-    //
-    //   // for (const node of view.rootNodes) {
-    //   //
-    //   //   this.renderer.appendChild(div, node);
-    //   // }
-    //   this.renderer.appendChild(this.element.nativeElement, component.location.nativeElement);
-    // }
-
     const element = this.element.nativeElement;
     this.resizeObserver = new ResizeObserver(() => {
       const maxScroll = element.scrollHeight - element.offsetHeight;
@@ -87,12 +58,6 @@ export class ScrollViewWithIndicatorDirective implements AfterViewInit, OnDestro
 
   openComponent(content: TemplateRef<unknown>) {
     const ngContent = this.createNgContent(content);
-    console.log(ngContent);
-    // let options= {
-    //   injector: this.injector,
-    //   projectableNodes:ngContent
-    // }
-
     const component = createComponent(ScrollViewWithIndicatorComponent, {
       environmentInjector: this.injector,
       projectableNodes: ngContent

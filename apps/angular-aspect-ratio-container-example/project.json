@@ -15,14 +15,13 @@
         "browser": "apps/angular-aspect-ratio-container-example/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/angular-aspect-ratio-container-example/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
             "input": "apps/angular-aspect-ratio-container-example/public"
           }
         ],
-        "styles": ["apps/angular-aspect-ratio-container-example/src/styles.scss"],
+        "styles": ["apps/angular-aspect-ratio-container-example/src/styles.css"],
         "scripts": []
       },
       "configurations": {

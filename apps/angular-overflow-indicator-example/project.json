@@ -15,12 +15,11 @@
         "browser": "apps/angular-overflow-indicator-example/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/angular-overflow-indicator-example/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
         "assets": [
           "apps/angular-overflow-indicator-example/src/favicon.ico",
           "apps/angular-overflow-indicator-example/src/assets"
         ],
-        "styles": ["apps/angular-overflow-indicator-example/src/styles.scss"],
+        "styles": ["apps/angular-overflow-indicator-example/src/styles.css"],
         "scripts": []
       },
       "configurations": {

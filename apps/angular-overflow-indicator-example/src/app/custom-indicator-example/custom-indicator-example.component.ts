@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ScrollViewWithIndicatorComponent } from 'angular-overflow-indicator';
 
 @Component({
-    selector: 'app-custom-indicator-example',
-    imports: [CommonModule, ScrollViewWithIndicatorComponent],
-    templateUrl: './custom-indicator-example.component.html',
-    styleUrl: './custom-indicator-example.component.scss'
+  selector: 'app-custom-indicator-example',
+  imports: [CommonModule, ScrollViewWithIndicatorComponent],
+  templateUrl: './custom-indicator-example.component.html',
+  styleUrl: './custom-indicator-example.component.css'
 })
 export class CustomIndicatorExampleComponent {
   readonly itemCount = signal(10);

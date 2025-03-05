@@ -16,11 +16,11 @@ import { CommonModule } from '@angular/common';
 import { DefaultIndicatorButtonComponent } from '../default-indicator-button';
 
 @Component({
-    selector: 'ng-scroll-view-with-indicator',
-    templateUrl: './scroll-view-with-indicator.component.html',
-    styleUrls: ['./scroll-view-with-indicator.component.scss'],
-    imports: [CommonModule, DefaultIndicatorButtonComponent],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ng-scroll-view-with-indicator',
+  templateUrl: './scroll-view-with-indicator.component.html',
+  styleUrls: ['./scroll-view-with-indicator.component.css'],
+  imports: [CommonModule, DefaultIndicatorButtonComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollViewWithIndicatorComponent implements AfterViewInit, OnDestroy {
   @ViewChild('contentWrapper') contentWrapper!: ElementRef<HTMLDivElement>;
