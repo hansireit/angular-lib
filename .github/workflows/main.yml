@@ -1,19 +1,27 @@
-name: Build-CI
+name: Main-CI
 on:
   push:
     branches:
       - main
   pull_request:
 
+permissions:
+  actions: read
+  contents: read
+
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
       - run: npm ci
-      - run: npx nx run-many --target=lint --all
-      - run: npx nx run-many --target=test --all --ci --code-coverage
-      - run: npx nx run-many --target=build --all
+
+      - uses: nrwl/nx-set-shas@v4
+      - run: npx nx affected -t lint test build
