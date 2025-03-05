@@ -18,10 +18,6 @@
       "command": "node tools/scripts/publish.mjs extract-from-argv {args.ver} {args.tag}",
       "dependsOn": ["build"]
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
-    },
     "test": {
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
