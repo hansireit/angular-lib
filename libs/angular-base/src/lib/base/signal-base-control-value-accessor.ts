@@ -4,8 +4,8 @@ import { ValueChangeCallback } from '../types/value-change-callback.type';
 
 @Directive()
 export abstract class SignalBaseControlValueAccessor<T = string> implements ControlValueAccessor {
-  private onChange: ValueChangeCallback<T> | null = null;
-  private onTouched: VoidFunction | null = null;
+  protected onChange: ValueChangeCallback<T> | null = null;
+  protected  onTouched: VoidFunction | null = null;
 
   value = model<T>();
 

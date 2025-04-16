@@ -1,11 +1,8 @@
 import { BaseModelComponent } from './base-model.component';
-import { MatTableDataSource } from '@angular/material/table';
 import { ModelAction } from './action';
 import { DaoId, Identifiable } from 'angular-base-dao';
 
 export abstract class BaseModelListComponent<TM extends Identifiable> extends BaseModelComponent<TM> {
-  readonly dataSource = new MatTableDataSource<TM>([]);
-
   protected constructor(baseRoute: string) {
     super(baseRoute);
 
@@ -40,12 +37,5 @@ export abstract class BaseModelListComponent<TM extends Identifiable> extends Ba
     this.router.navigate([`${this.baseRoute}/add`]);
   }
 
-  async deleteModel(model: TM): Promise<void> {
-    const [deleted, newList] = await this.handleModelDelete(model);
-    if (deleted && newList) {
-      this.dataSource.data = newList;
-    }
-  }
-
-  abstract handleModelDelete(model: TM): Promise<[boolean, TM[]]>;
+  abstract deleteModel(model: TM): Promise<boolean>;
 }
