@@ -5,7 +5,7 @@ import { BackButtonDirective } from './back-button.directive';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: ` <button ngLibBackButton>Click me</button> `,
+  template: ` <button ngBackButton>Click me</button> `,
   imports: [BackButtonDirective]
 })
 class TestingComponent {}

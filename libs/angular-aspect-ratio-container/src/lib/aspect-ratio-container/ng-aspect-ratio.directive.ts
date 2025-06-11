@@ -1,4 +1,4 @@
-import { ElementRef, AfterViewInit, Renderer2, OnDestroy, Directive, input, inject } from '@angular/core';
+import { ElementRef, AfterViewInit, Renderer2, OnDestroy, Directive, input, inject, output } from '@angular/core';
 import { SizingMode } from './sizing-mode';
 
 @Directive({
@@ -9,8 +9,13 @@ export class NgAspectRatioDirective implements AfterViewInit, OnDestroy {
   private readonly hostElem = inject(ElementRef);
   private readonly observer: ResizeObserver;
 
-  targetRatio = input.required<number>({ alias: 'ngAspectRatio' });
+  ngAspectRatio = input.required<number>();
   sizingMode = input<SizingMode>('match-parent');
+
+  containerWidthChanged = output<number>();
+  containerHeightChanged = output<number>();
+
+  private readonly targetRatio = this.ngAspectRatio;
 
   constructor() {
     this.observer = new ResizeObserver(() => {
@@ -67,10 +72,12 @@ export class NgAspectRatioDirective implements AfterViewInit, OnDestroy {
   }
 
   private setAcInnerWidth(width: number) {
+    this.containerWidthChanged.emit(width);
     this.renderer.setStyle(this.hostElem.nativeElement, 'width', `${width}px`);
   }
 
   private setAcInnerHeight(height: number) {
+    this.containerHeightChanged.emit(height);
     this.renderer.setStyle(this.hostElem.nativeElement, 'height', `${height}px`);
   }
 }

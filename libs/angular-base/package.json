@@ -1,6 +1,6 @@
 {
   "name": "angular-base-lib",
-  "version": "19.0.4",
+  "version": "19.0.5",
   "description": "Angular dao-feature, auth, model-components, navigation-service and other abstract helpers",
   "license": "MIT",
   "repository": {
