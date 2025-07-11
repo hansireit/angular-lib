@@ -4,7 +4,7 @@ import {
   Directive,
   ElementRef,
   EnvironmentInjector,
-  HostBinding,
+  HostBinding, inject,
   Input,
   OnDestroy,
   Renderer2,
@@ -22,16 +22,14 @@ export class ScrollViewWithIndicatorDirective implements AfterViewInit, OnDestro
   @HostBinding('style.position') position = 'relative';
   @Input() libScrollViewWithIndicator!: TemplateRef<unknown>;
 
+  private readonly element = inject(ElementRef);
+  private readonly injector = inject(EnvironmentInjector);
+  private readonly vcr = inject(ViewContainerRef);
+  private readonly renderer = inject(Renderer2);
+
   isOverflowing = signal(false);
 
   private resizeObserver: ResizeObserver | null = null;
-
-  constructor(
-    private element: ElementRef,
-    private injector: EnvironmentInjector,
-    private vcr: ViewContainerRef,
-    private renderer: Renderer2
-  ) {}
 
   ngAfterViewInit(): void {
     this.openComponent(this.libScrollViewWithIndicator);

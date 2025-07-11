@@ -1,7 +1,7 @@
 import { HorizontalAlignment } from './horizontal-alignment';
 import { VerticalAlignment } from './vertical-alignment';
 
-type FlexAlignment = 'center' | 'flex-start' | 'flex-end';
+export type FlexAlignment = 'center' | 'flex-start' | 'flex-end';
 
 export const alignmentFlexMapping = new Map<HorizontalAlignment | VerticalAlignment, FlexAlignment>([
   ['center', 'center'],

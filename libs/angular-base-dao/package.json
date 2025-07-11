@@ -1,6 +1,6 @@
 {
   "name": "angular-base-dao",
-  "version": "19.0.5",
+  "version": "20.0.0",
   "homepage": "https://github.com/hansireit/angular-lib#readme",
   "repository": {
     "type": "git",
@@ -8,11 +8,11 @@
     "directory": "libs/angular-base-dao"
   },
   "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0"
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0"
   },
   "dependencies": {
-    "tslib": "^2.6.2"
+    "tslib": "^2.8.1"
   },
   "sideEffects": false,
   "keywords": [

@@ -54,6 +54,7 @@ import { ScrollViewWithIndicatorComponent } from 'angular-overflow-indicator';
 **Step 5: Add the overflow-indicator-component with a list larger than the outer container and pass the template reference of the indicator-button**
 
 ```html
+
 <div [style]="{ height: '300px', width: '500px' }">
   <ng-template #customButton>
     <button (click)="view.scrollToBottom()">There is more below <i>👇</i></button>
@@ -61,7 +62,9 @@ import { ScrollViewWithIndicatorComponent } from 'angular-overflow-indicator';
 
   <ng-scroll-view-with-indicator #view [indicatorButton]="customButton">
     <ul>
-      <li *ngFor="let item of items()">List item {{ item }}</li>
+      @for (item of items(); track item) {
+        <li>List item {{ item }}</li>
+      }
     </ul>
   </ng-scroll-view-with-indicator>
 </div>

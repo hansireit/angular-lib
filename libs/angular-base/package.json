@@ -1,6 +1,6 @@
 {
   "name": "angular-base-lib",
-  "version": "19.0.5",
+  "version": "20.0.0",
   "description": "Angular dao-feature, auth, model-components, navigation-service and other abstract helpers",
   "license": "MIT",
   "repository": {
@@ -9,10 +9,10 @@
     "directory": "libs/angular-base"
   },
   "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angular/router": "^19.0.0",
-    "@angular/forms": "^19.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "@angular/forms": "^20.0.0",
     "rxjs": "~7.8.1"
   },
   "sideEffects": false,

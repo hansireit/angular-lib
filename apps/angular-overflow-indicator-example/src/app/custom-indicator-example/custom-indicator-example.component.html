@@ -5,7 +5,9 @@
 
   <ng-scroll-view-with-indicator #view [indicatorButton]="customButton">
     <ul>
-      <li *ngFor="let item of items()">List item {{ item }}</li>
+      @for (item of items(); track item) {
+        <li>List item {{ item }}</li>
+      }
     </ul>
   </ng-scroll-view-with-indicator>
 </div>

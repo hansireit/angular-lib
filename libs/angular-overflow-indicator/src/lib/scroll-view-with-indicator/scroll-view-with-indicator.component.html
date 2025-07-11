@@ -2,10 +2,12 @@
   <ng-content />
 </div>
 
-<div class="scroll-indicator" *ngIf="isOverflowing() && !isAtBottom()">
-  <ng-container *ngIf="indicatorButton(); else defaultButton" [ngTemplateOutlet]="indicatorButton()" />
-
-  <ng-template #defaultButton>
-    <ng-scroll-view-default-indicator-button (buttonClicked)="scrollToBottom()" />
-  </ng-template>
-</div>
+@if (isOverflowing() && !isAtBottom()) {
+  <div class="scroll-indicator">
+    @if (indicatorButton()) {
+      <ng-container [ngTemplateOutlet]="indicatorButton()" />
+    } @else {
+      <ng-scroll-view-default-indicator-button (buttonClicked)="scrollToBottom()" />
+    }
+  </div>
+}
