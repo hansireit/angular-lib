@@ -3,22 +3,21 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/angular-base-form/src",
   "prefix": "angular-lib",
-  "tags": [],
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/angular-base-form/ng-package.json"
+        "project": "libs/angular-base-form/ng-package.json",
+        "tsConfig": "libs/angular-base-form/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "libs/angular-base-form/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "libs/angular-base-form/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     }
