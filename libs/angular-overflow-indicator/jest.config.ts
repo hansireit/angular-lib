@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'angular-overflow-indicator',
   preset: '../../jest.preset.js',

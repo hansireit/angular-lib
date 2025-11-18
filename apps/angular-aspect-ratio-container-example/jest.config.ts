@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'angular-aspect-ratio-container-example',
   preset: '../../jest.preset.js',

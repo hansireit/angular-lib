@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'angular-base-dao',
   preset: '../../jest.preset.js',
