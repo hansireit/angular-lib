@@ -22,7 +22,7 @@
         }
       }
     },
-    "@nx/vite:test": {
+    "@nx/vitest:test": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
