@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   displayName: 'angular-aspect-ratio-container',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

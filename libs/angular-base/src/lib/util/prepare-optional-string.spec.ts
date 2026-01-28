@@ -1,5 +1,4 @@
 import { prepareOptionalString } from './prepare-optional-string';
-
 describe('PrepareOptionalString', () => {
   it('should correctly prepare a optional string value', () => {
     expect(prepareOptionalString('')).toBe(undefined);

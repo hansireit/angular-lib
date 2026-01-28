@@ -1,6 +1,6 @@
 {
   "name": "angular-aspect-ratio-container",
-  "version": "20.0.4",
+  "version": "21.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
     "directory": "libs/angular-aspect-ratio-container"
   },
   "peerDependencies": {
-    "@angular/core": "^20.0.0"
+    "@angular/core": "^21.0.0"
   },
   "sideEffects": false
 }

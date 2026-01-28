@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   displayName: 'angular-overflow-indicator-example',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

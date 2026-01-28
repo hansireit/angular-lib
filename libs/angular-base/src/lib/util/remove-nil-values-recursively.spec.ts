@@ -1,5 +1,4 @@
 import { removeNullValuesRecursively } from './remove-nil-values-recursively';
-
 describe('RemoveNullValuesRecursively', () => {
   it('should remove null values recursively from an given object', () => {
     const obj = {
@@ -14,7 +13,6 @@ describe('RemoveNullValuesRecursively', () => {
         }
       ]
     };
-
     const result = removeNullValuesRecursively(obj);
     expect(result).toStrictEqual({
       passengers: [
