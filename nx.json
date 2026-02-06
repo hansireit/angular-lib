@@ -9,7 +9,7 @@
       "inputs": ["production", "^production"],
       "cache": true
     },
-    "@nx/jest:jest": {
+    "test": {
       "cache": true,
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "options": {

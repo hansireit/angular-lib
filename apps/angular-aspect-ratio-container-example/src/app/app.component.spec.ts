@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NgAspectRatioDirective } from 'angular-aspect-ratio-container';
+
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let observerCallback: ResizeObserverCallback | null = null;
@@ -23,6 +24,7 @@ describe('AppComponent', () => {
     fixture = TestBed.configureTestingModule({}).createComponent(AppComponent);
     fixture.detectChanges();
   });
+
   it('should render the aspect container correctly', async () => {
     const container = fixture.debugElement.query(By.directive(NgAspectRatioDirective));
     expect(container).toBeDefined();

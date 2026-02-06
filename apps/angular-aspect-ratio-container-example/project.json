@@ -13,7 +13,6 @@
         "outputPath": "dist/apps/angular-aspect-ratio-container-example",
         "index": "apps/angular-aspect-ratio-container-example/src/index.html",
         "browser": "apps/angular-aspect-ratio-container-example/src/main.ts",
-        "polyfills": ["zone.js"],
         "tsConfig": "apps/angular-aspect-ratio-container-example/tsconfig.app.json",
         "assets": [
           {
