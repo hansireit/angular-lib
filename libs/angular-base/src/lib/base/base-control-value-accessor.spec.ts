@@ -2,10 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { BaseControlValueAccessor } from './base-control-value-accessor';
 import { FormsModule } from '@angular/forms';
+import { vi } from 'vitest';
+
 @Component({
   template: `<input [(ngModel)]="value" />`,
   imports: [FormsModule]
 })
+
 class TestingComponent extends BaseControlValueAccessor {}
 describe('BaseControlValueAccessor', () => {
   let fixture: ComponentFixture<TestingComponent>;
@@ -15,16 +18,18 @@ describe('BaseControlValueAccessor', () => {
     fixture.detectChanges();
     component = fixture.componentInstance;
   });
+
   it('should write a value to the model', () => {
     component.writeValue('Hello');
     expect(component.value).toBe('Hello');
   });
+
   it('should trigger onChange and onTouch when a new value is passed to the changed function', () => {
-    const changeFn = jest.fn();
-    const touchFn = jest.fn();
+    const changeFn = vi.fn();
+    const touchFn = vi.fn();
     component.registerOnChange(changeFn);
     component.registerOnTouched(touchFn);
-    component.valueChanged.emit = jest.fn();
+    component.valueChanged.emit = vi.fn();
     component.value = 'Hej';
     expect(component.value).toBe('Hej');
     expect(changeFn).toHaveBeenCalledWith('Hej');
@@ -32,11 +37,11 @@ describe('BaseControlValueAccessor', () => {
     expect(touchFn).toHaveBeenCalled();
   });
   it('should trigger onChange and onTouch only once if the same value passed to the changed function', () => {
-    const changeFn = jest.fn();
-    const touchFn = jest.fn();
+    const changeFn = vi.fn();
+    const touchFn = vi.fn();
     component.registerOnChange(changeFn);
     component.registerOnTouched(touchFn);
-    component.valueChanged.emit = jest.fn();
+    component.valueChanged.emit = vi.fn();
     component.value = 'Hej';
     component.value = 'Hej';
     component.value = 'Hej';
@@ -47,8 +52,8 @@ describe('BaseControlValueAccessor', () => {
     expect(component.valueChanged.emit).toHaveBeenCalledTimes(1);
   });
   it('should not trigger a value change if the control is disabled', () => {
-    const changeFn = jest.fn();
-    const touchFn = jest.fn();
+    const changeFn = vi.fn();
+    const touchFn = vi.fn();
     component.registerOnChange(changeFn);
     component.registerOnTouched(touchFn);
     component.setDisabledState(true);

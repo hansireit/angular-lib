@@ -3,6 +3,7 @@ import { NavigationService } from './navigation.service';
 import { Component } from '@angular/core';
 import { BackButtonDirective } from './back-button.directive';
 import { By } from '@angular/platform-browser';
+import { vi } from 'vitest';
 @Component({
   template: ` <button ngBackButton>Click me</button> `,
   imports: [BackButtonDirective]
@@ -13,7 +14,7 @@ describe('NavigationService', () => {
   let fixture: ComponentFixture<TestingComponent>;
   beforeEach(() => {
     const navigationServiceMock: Partial<NavigationService> = {
-      back: jest.fn()
+      back: vi.fn()
     };
     fixture = TestBed.configureTestingModule({
       providers: [{ provide: NavigationService, useValue: navigationServiceMock }]

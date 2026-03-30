@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { SignalBaseControlValueAccessor } from './signal-base-control-value-accessor';
 import { FormsModule } from '@angular/forms';
+import { vi } from 'vitest';
 @Component({
   template: `<input [ngModel]="value()" (ngModelChange)="valueChanged($event)" />`,
   imports: [FormsModule]
@@ -20,8 +21,8 @@ describe('SignalBaseControlValueAccessor', () => {
     expect(component.value()).toBe('Hello');
   });
   it('should trigger onChange and onTouch when a new value is passed to the changed function', () => {
-    const changeFn = jest.fn();
-    const touchFn = jest.fn();
+    const changeFn = vi.fn();
+    const touchFn = vi.fn();
     component.registerOnChange(changeFn);
     component.registerOnTouched(touchFn);
     component.valueChanged('Hej');
@@ -30,8 +31,8 @@ describe('SignalBaseControlValueAccessor', () => {
     expect(touchFn).toHaveBeenCalled();
   });
   it('should trigger onChange and onTouch only once if the same value passed to the changed function', () => {
-    const changeFn = jest.fn();
-    const touchFn = jest.fn();
+    const changeFn = vi.fn();
+    const touchFn = vi.fn();
     component.registerOnChange(changeFn);
     component.registerOnTouched(touchFn);
     component.valueChanged('Hej');
@@ -43,8 +44,8 @@ describe('SignalBaseControlValueAccessor', () => {
     expect(touchFn).toHaveBeenCalledTimes(1);
   });
   it('should not trigger a value change if the control is disabled', () => {
-    const changeFn = jest.fn();
-    const touchFn = jest.fn();
+    const changeFn = vi.fn();
+    const touchFn = vi.fn();
     component.registerOnChange(changeFn);
     component.registerOnTouched(touchFn);
     component.setDisabledState(true);

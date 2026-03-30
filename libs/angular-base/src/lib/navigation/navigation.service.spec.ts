@@ -4,20 +4,24 @@ import { NavigationService } from './navigation.service';
 import { NavigationEnd, provideRouter, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+import { vi } from 'vitest';
+
 describe('NavigationService', () => {
   let service: NavigationService;
   let router: Router;
   let location: Location;
   let eventsSubject: Subject<any>;
+
   beforeEach(() => {
     eventsSubject = new Subject<any>();
     const routerMock: Partial<Router> = {
       events: eventsSubject,
-      navigate: jest.fn()
+      navigate: vi.fn()
     };
     const locationMock: Partial<Location> = {
-      back: jest.fn()
+      back: vi.fn()
     };
+
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
@@ -29,6 +33,7 @@ describe('NavigationService', () => {
     router = TestBed.inject(Router);
     location = TestBed.inject(Location);
   });
+
   it('should navigate to the fallback-route if no history is defined', () => {
     eventsSubject.next(new NavigationEnd(0, 'init', 'init-after'));
     service.back('/fallback');

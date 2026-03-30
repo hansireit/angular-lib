@@ -37,7 +37,13 @@ export default [
   {
     files: ['**/*.json'],
     rules: {
-      '@nx/dependency-checks': 'error'
+      '@nx/dependency-checks': [
+        'error',
+        {
+          ignoredDependencies: ['vite', '@nx/vite', '@analogjs/vite-plugin-angular'],
+          ignoredFiles: [ 'vitest.config.mts'],
+        }
+      ]
     },
     languageOptions: {
       parser: await import('jsonc-eslint-parser')

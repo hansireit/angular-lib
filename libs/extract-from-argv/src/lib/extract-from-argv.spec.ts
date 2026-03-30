@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { extractFromArgv } from './extract-from-argv';
 import { ExtractFromArgvOptions } from './extract-from-argv-options';
 

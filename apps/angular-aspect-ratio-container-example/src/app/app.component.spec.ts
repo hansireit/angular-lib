@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { vi, it, describe, expect, beforeEach } from 'vitest';
 import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NgAspectRatioDirective } from 'angular-aspect-ratio-container';
@@ -6,6 +7,7 @@ import { NgAspectRatioDirective } from 'angular-aspect-ratio-container';
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let observerCallback: ResizeObserverCallback | null = null;
+
   beforeEach(() => {
     global.ResizeObserver = class FakeResizeObserver {
       constructor(callback: ResizeObserverCallback) {
@@ -29,10 +31,10 @@ describe('AppComponent', () => {
     const container = fixture.debugElement.query(By.directive(NgAspectRatioDirective));
     expect(container).toBeDefined();
     if (!observerCallback) {
-      fail('Observer not initialized');
+      expect(false);
     }
     // Fake the size of the parent element, as jest does not render the dimensions of elements
-    jest.spyOn(container.nativeElement, 'parentElement', 'get').mockReturnValue({
+    vi.spyOn(container.nativeElement, 'parentElement', 'get').mockReturnValue({
       offsetWidth: 500,
       offsetHeight: 500
     });
