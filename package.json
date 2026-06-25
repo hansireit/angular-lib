@@ -1,11 +1,14 @@
 {
   "name": "angular-lib",
-  "version": "21.0.4",
+  "version": "21.0.5",
   "license": "MIT",
   "scripts": {
     "build": "nx run-many --target=build --all",
     "lint": "nx run-many --target=lint --all",
     "test": "nx run-many --target=test --all"
+  },
+  "engines": {
+    "node": ">=26"
   },
   "private": true,
   "dependencies": {
