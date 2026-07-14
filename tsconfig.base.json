@@ -21,7 +21,12 @@
       "angular-base-form": ["libs/angular-base-form/src/index.ts"],
       "angular-overflow-indicator": ["libs/angular-overflow-indicator/src/index.ts"],
       "extract-from-argv": ["libs/extract-from-argv/src/index.ts"]
-    }
+    },
+    "strict": false,
+    "noUncheckedSideEffectImports": false,
+    "types": ["*"],
+    "esModuleInterop": false,
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules", "tmp"]
 }
