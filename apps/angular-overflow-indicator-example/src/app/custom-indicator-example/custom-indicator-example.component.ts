@@ -1,12 +1,10 @@
-import { Component, computed, signal, ChangeDetectionStrategy } from '@angular/core';
-
+import { Component, computed, signal } from '@angular/core';
 import { ScrollViewWithIndicatorComponent } from 'angular-overflow-indicator';
 
 @Component({
   selector: 'app-custom-indicator-example',
   imports: [ScrollViewWithIndicatorComponent],
   templateUrl: './custom-indicator-example.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './custom-indicator-example.component.css'
 })
 export class CustomIndicatorExampleComponent {
