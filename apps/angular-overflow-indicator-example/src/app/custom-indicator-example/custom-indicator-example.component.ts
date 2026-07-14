@@ -1,5 +1,4 @@
 import { Component, computed, signal } from '@angular/core';
-
 import { ScrollViewWithIndicatorComponent } from 'angular-overflow-indicator';
 
 @Component({
