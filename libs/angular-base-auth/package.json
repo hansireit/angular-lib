@@ -6,7 +6,7 @@
     "url": "https://github.com/hansireit/angular-lib",
     "directory": "libs/angular-base-auth"
   },
-  "version": "22.0.0",
+  "version": "22.0.1",
   "peerDependencies": {
     "rxjs": "~7.8.1",
     "@angular/core": "^22.0.0",
