@@ -20,7 +20,9 @@
       "angular-base-dao": ["libs/angular-base-dao/src/index.ts"],
       "angular-base-form": ["libs/angular-base-form/src/index.ts"],
       "angular-overflow-indicator": ["libs/angular-overflow-indicator/src/index.ts"],
-      "extract-from-argv": ["libs/extract-from-argv/src/index.ts"]
+      "extract-from-argv": ["libs/extract-from-argv/src/index.ts"],
+      "test": ["./libs/test/src/index.ts"],
+      "test2": ["./libs/test2/src/index.ts"]
     },
     "strict": false,
     "noUncheckedSideEffectImports": false,
