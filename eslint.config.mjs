@@ -5,7 +5,7 @@ export default [
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist']
+    ignores: ['**/dist', '**/vitest.config.*.timestamp*']
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.cjs'],
@@ -23,14 +23,13 @@ export default [
           ]
         }
       ],
-      'no-extra-semi': 'off',
-
+      'no-extra-semi': 'off'
     }
   },
   {
     files: ['**/*spec.ts'],
     rules: {
-      'max-lines-per-function': ['error', 200],
+      'max-lines-per-function': ['error', 200]
     }
   },
   {
