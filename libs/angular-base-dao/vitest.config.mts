@@ -14,7 +14,9 @@ export default defineConfig(() => ({
     include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     setupFiles: ['src/test-setup.ts'],
     coverage: {
-      reportsDirectory: '../../coverage/libs/angular-base-dao',
+      include: ['src/**/*.{ts,tsx,js,jsx}'],
+      exclude: ['**/test-setup.*'],
+      reportsDirectory: '../../coverage/angular-base-dao',
       provider: 'v8' as const
     },
     passWithNoTests: true

@@ -14,7 +14,9 @@ export default defineConfig(() => ({
     include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     setupFiles: ['src/test-setup.ts'],
     coverage: {
-      reportsDirectory: '../../coverage/libs/angular-overflow-indicator',
+      include: ['src/**/*.{ts,tsx,js,jsx}'],
+      exclude: ['**/test-setup.*'],
+      reportsDirectory: '../../coverage/angular-overflow-indicator',
       provider: 'v8' as const
     },
     passWithNoTests: true

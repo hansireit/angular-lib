@@ -20,10 +20,8 @@
       "dependsOn": ["build"]
     },
     "test": {
-      "outputs": ["{projectRoot}/{options.coverage.reportsDirectory}", "{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "passWithNoTests": true,
-        "coverage.reportsDirectory": "../../../coverage/libs/extract-from-argv"
+        "passWithNoTests": true
       }
     }
   }

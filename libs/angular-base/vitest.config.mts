@@ -15,7 +15,9 @@ export default defineConfig(() => ({
     include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     setupFiles: ['src/test-setup.ts'],
     coverage: {
-      reportsDirectory: '../../coverage/libs/angular-base',
+      include: ['src/**/*.{ts,tsx,js,jsx}'],
+      exclude: ['**/test-setup.*'],
+      reportsDirectory: '../../coverage/angular-base',
       provider: 'v8' as const
     }
   }
